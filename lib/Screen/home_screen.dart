@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -6,9 +5,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
-import 'package:remindits/services/notification_logic.dart';
-import 'package:remindits/utils/app_colors.dart';
-import 'package:remindits/widgets/add_reminder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,62 +27,11 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-
-  User? user;
-  bool on = true;
-
-  void initState() {
-    user = FirebaseAuth.instance.currentUser;
-    NotificationLogic.init(context, user!.uid);
-    listenNotification();
-  }
-
-  void listenNotification() {
-    NotificationLogic.onNotification.listen((value) {});
-  }
-
-  void OnClickedNotification() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ),
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-        onPressed: () async {
-          addReminder(context, user!.uid);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: AppColors.primaryButton,
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-            ),
-            borderRadius: BorderRadius.circular(100),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                blurRadius: 2,
-                offset: Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Center(
-            child: Icon(
-              Ionicons.add,
-              color: Colors.white,
-              size: 30,
-            ),
-          ),
-        ),
-      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(

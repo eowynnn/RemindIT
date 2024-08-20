@@ -61,7 +61,7 @@ addReminder(BuildContext context, String uid) {
                       children: [
                         FaIcon(
                           FontAwesomeIcons.clock,
-                          color: AppColors.primaryColor2,
+                          color: AppColors.primaryColor1,
                           size: 20,
                         ),
                         SizedBox(
@@ -83,14 +83,20 @@ addReminder(BuildContext context, String uid) {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Cancel"),
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.red),
+                ),
               ),
               TextButton(
                 onPressed: () {
                   add(uid, time);
                   Navigator.pop(context);
                 },
-                child: Text("Add"),
+                child: Text(
+                  "Add",
+                  style: TextStyle(color: AppColors.primaryColor1),
+                ),
               ),
             ],
           );

@@ -1,18 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:remindits/Screen/home_screen.dart';
+import 'package:remindits/services/notification_logic.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:remindits/utils/app_colors.dart';
+import 'package:remindits/widgets/add_reminder.dart';
 
 class NotifPage extends StatefulWidget {
-  const NotifPage({super.key});
-
   @override
   State<NotifPage> createState() => _NotifPageState();
 }
 
 class _NotifPageState extends State<NotifPage> {
+  User? user;
+  bool on = true;
+
+  void initState() {
+    user = FirebaseAuth.instance.currentUser;
+    NotificationLogic.init(context, user!.uid);
+    listenNotification();
+  }
+
+  void listenNotification() {
+    NotificationLogic.onNotification.listen((value) {});
+  }
+
+  void OnClickedNotification() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        onPressed: () async {
+          addReminder(context, user!.uid);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: AppColors.primaryButton,
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+            ),
+            borderRadius: BorderRadius.circular(100),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                spreadRadius: 5,
+                blurRadius: 10,
+                offset: Offset(0, 0),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Icon(
+              Ionicons.add,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
         title: Text(
           "Notifications",
