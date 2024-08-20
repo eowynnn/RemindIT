@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "763083832014",
+    "project_id": "remindit-fbz",
+    "storage_bucket": "remindit-fbz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763083832014:android:ff80b4596b5e7bec3aee9f",
+        "android_client_info": {
+          "package_name": "com.example.remindits"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXGnSwqKUkUP49pebLvWVpVHIHjHtw8L0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
