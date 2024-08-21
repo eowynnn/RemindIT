@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class MyTextBox extends StatelessWidget {
   final String text;
@@ -52,8 +51,10 @@ class MyTextBox extends StatelessWidget {
               )
             ],
           ),
-          
-          Text(text),
+          Text(
+            text,
+            style: TextStyle(fontFamily: "SFProText", fontSize: 16),
+          ),
         ],
       ),
     );

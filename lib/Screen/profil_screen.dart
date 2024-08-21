@@ -119,7 +119,7 @@ class _ProfilPageState extends State<ProfilPage> {
                     height: 50,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25),
+                    padding: EdgeInsets.only(left: 40),
                     child: Text(
                       "My Details",
                       style: TextStyle(
