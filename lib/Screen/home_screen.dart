@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
 import 'package:remindits/utils/app_colors.dart';

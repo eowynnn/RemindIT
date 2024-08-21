@@ -17,6 +17,7 @@ class _NotifPageState extends State<NotifPage> {
   bool on = true;
 
   void initState() {
+    super.initState();
     user = FirebaseAuth.instance.currentUser;
     NotificationLogic.init(context, user!.uid);
     listenNotification();

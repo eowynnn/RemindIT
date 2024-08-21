@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:remindits/Screen/login_screen.dart';
 import 'package:remindits/utils/app_colors.dart';
-import 'package:remindits/widgets/round_gradient_button.dart';
 import 'package:remindits/widgets/text_box_profile.dart';
 
 class ProfilPage extends StatefulWidget {
