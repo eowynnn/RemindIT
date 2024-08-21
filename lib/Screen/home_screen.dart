@@ -5,6 +5,8 @@ import 'package:ionicons/ionicons.dart';
 import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
+import 'package:remindits/widgets/artickle.dart';
+import 'package:remindits/widgets/list_notif.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +29,6 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -213,131 +214,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ListNotifWidget extends StatelessWidget {
-  const ListNotifWidget({
-    super.key,
-    required this.no,
-    required this.name,
-    required this.time,
-  });
-  final String no;
-  final String name;
-  final String time;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Color(0xffE6F7FF), borderRadius: BorderRadius.circular(12)),
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 10),
-      child: Row(
-        children: [
-          Text(
-            no,
-            style: TextStyle(
-              fontFamily: "SFProText",
-            ),
-          ),
-          Container(
-            width: 230,
-            padding: const EdgeInsets.only(left: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: TextStyle(
-                    fontFamily: "SFProText",
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Text(
-            time,
-            style: TextStyle(
-              fontFamily: "SFProText",
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class ArtickelWidget extends StatelessWidget {
-  const ArtickelWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 140,
-      width: 400,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Color(0xffE6F7FF),
-      ),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 23, horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Ideal Hours for Sleep",
-                style: TextStyle(
-                  fontFamily: "SFProText",
-                ),
-              ),
-              Text("8hours 30minutes",
-                  style: TextStyle(
-                    color: Color(0xFF16C1E3),
-                    fontFamily: "SFProText",
-                  )),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                height: 35,
-                width: 106,
-                decoration: BoxDecoration(
-                    color: Color(0xff42DCF9),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Material(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(20),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return ArtickelPage();
-                      }));
-                    },
-                    child: Center(
-                      child: Text(
-                        "Learn More",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-        Container(
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 17),
-            child: Image(image: AssetImage("assets/png/Icon-Bed.png")))
-      ]),
     );
   }
 }

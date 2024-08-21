@@ -28,11 +28,6 @@ class _LoginPageState extends State<LoginPage> {
 
       User? user = userCredential.user;
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Login Successfull"),
-        ),
-      );
       Navigator.push(
           context,
           MaterialPageRoute(
