@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
+import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/artickle.dart';
 import 'package:remindits/widgets/list_notif.dart';
 
@@ -39,18 +40,25 @@ class _HomePageState extends State<HomePage> {
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
-          color: Color(0xff42DCF9),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.15),
+              spreadRadius: 5,
+              blurRadius: 10,
+              offset: Offset(0, 0),
+            ),
+          ],
+          color: Color(0xffffffff),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           child: GNav(
             padding: EdgeInsets.all(12),
             tabBorderRadius: 100,
             gap: 8,
-            tabBackgroundColor: Color(0xff00B4D8),
-            backgroundColor: Color(0xff42DCF9),
-            color: Colors.white,
-            activeColor: Colors.white,
+            backgroundColor: Colors.white,
+            color: AppColors.textColor1,
+            activeColor: AppColors.primaryColor1,
             selectedIndex: _selectedIndex,
             onTabChange: _onTabChanged,
             tabs: const [

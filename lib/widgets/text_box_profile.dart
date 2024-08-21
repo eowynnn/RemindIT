@@ -45,13 +45,14 @@ class MyTextBox extends StatelessWidget {
               IconButton(
                 onPressed: onPressed,
                 icon: Icon(
-                  Ionicons.pencil,
+                  Icons.edit,
                   color: Colors.grey[400],
-                  size: 20,
+                  size: 15,
                 ),
               )
             ],
           ),
+          
           Text(text),
         ],
       ),

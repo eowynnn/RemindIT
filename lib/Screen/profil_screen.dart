@@ -31,10 +31,10 @@ class _ProfilPageState extends State<ProfilPage> {
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.white,
         title: Text(
           "Edit $field",
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: AppColors.textColor1),
         ),
         content: TextField(
           autofocus: true,
@@ -51,14 +51,14 @@ class _ProfilPageState extends State<ProfilPage> {
           TextButton(
             child: Text(
               "Cancel",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: AppColors.textColor1),
             ),
             onPressed: () => Navigator.pop(context),
           ),
           TextButton(
             child: Text(
               "Save",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: AppColors.textColor1),
             ),
             onPressed: () => Navigator.of(context).pop(newValue),
           ),
