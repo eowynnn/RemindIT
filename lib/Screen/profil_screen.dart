@@ -137,9 +137,41 @@ class _ProfilPageState extends State<ProfilPage> {
                     onPressed: () => editField("lastName"),
                   ),
                   SizedBox(
-                    height: media.height * 0.15,
+                    height: media.height * 0.175,
                   ),
-                  RoundGradientButton(title: "Sign out", onPressed: _signOut),
+                  Padding(
+                    padding: EdgeInsets.all(50),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: AppColors.primaryButton,
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight),
+                          borderRadius: BorderRadius.circular(25),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 2,
+                                offset: Offset(0, 2))
+                          ]),
+                      child: MaterialButton(
+                        onPressed: _signOut,
+                        minWidth: double.maxFinite,
+                        height: 50,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        textColor: AppColors.textColor1,
+                        child: Text(
+                          "Sign Out",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: AppColors.whiteColor,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             );
