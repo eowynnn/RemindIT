@@ -46,6 +46,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   flutter_local_notifications: ^17.2.2
+  firebase_messaging: ^15.0.4
 
 dev_dependencies:
   flutter_test:
