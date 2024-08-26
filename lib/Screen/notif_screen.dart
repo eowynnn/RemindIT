@@ -37,7 +37,7 @@ class _NotifPageState extends State<NotifPage> {
   //       context,
   //       MaterialPageRoute(
   //         builder: (context) => NotifPage(),
-  //       ));
+  //       ),);
   // }
 
   @override
