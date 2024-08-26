@@ -93,7 +93,7 @@ class _RegistPageState extends State<RegistPage> {
                   RoundTextField(
                     textEditingController: _firstNameController,
                     hintText: "First Name",
-                    icon: "Message",
+                    icon: "Profile",
                     textInputType: TextInputType.name,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -108,7 +108,7 @@ class _RegistPageState extends State<RegistPage> {
                   RoundTextField(
                     textEditingController: _lastNameController,
                     hintText: "Last Name",
-                    icon: "Message",
+                    icon: "Profile",
                     textInputType: TextInputType.name,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -159,8 +159,9 @@ class _RegistPageState extends State<RegistPage> {
                       },
                       child: Container(
                         child: Icon(
-                          _isObsecure ? Icons.visibility : Icons.visibility_off,
+                          _isObsecure ? Icons.visibility_off : Icons.visibility,
                           size: 20,
+                          color: AppColors.textColor1,
                         ),
                         alignment: Alignment.center,
                         height: 20,
@@ -169,7 +170,34 @@ class _RegistPageState extends State<RegistPage> {
                     ),
                   ),
                   SizedBox(
-                    height: media.width * 0.08,
+                    height: media.width * 0.04,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _isCheck = !_isCheck;
+                          });
+                        },
+                        icon: Icon(
+                          _isCheck
+                              ? Icons.check_box
+                              : Icons.check_box_outline_blank,
+                          color: AppColors.textGrayColor,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          "By continuing you accept our Privacy Police and\nterms of Use",
+                          style: TextStyle(color: AppColors.textGrayColor),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: media.width * 0.06,
                   ),
                   RoundGradientButton(
                     title: "Create Account",

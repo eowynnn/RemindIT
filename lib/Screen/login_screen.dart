@@ -140,6 +140,11 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       },
                       child: Container(
+                        child: Icon(
+                          _isObsecure ? Icons.visibility_off : Icons.visibility,
+                          size: 20,
+                          color: AppColors.textColor1,
+                        ),
                         alignment: Alignment.center,
                         height: 20,
                         width: 20,
