@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:remindits/utils/app_colors.dart';
 
 class RoundTextField extends StatelessWidget {
@@ -6,7 +7,7 @@ class RoundTextField extends StatelessWidget {
   final FormFieldValidator? validator;
   final ValueChanged<String>? onChanged;
   final String hintText;
-  // final String icon;
+  final String icon;
   final TextInputType textInputType;
   final bool isObsecureText;
   final Widget? rightIcon;
@@ -17,7 +18,7 @@ class RoundTextField extends StatelessWidget {
       this.validator,
       this.onChanged,
       required this.hintText,
-      // required this.icon,
+      required this.icon,
       required this.textInputType,
       this.isObsecureText = false,
       this.rightIcon});
@@ -39,17 +40,17 @@ class RoundTextField extends StatelessWidget {
             focusedBorder: InputBorder.none,
             hintText: hintText,
             prefixIcon: Container(
-                alignment: Alignment.center,
-                width: 20,
+              alignment: Alignment.center,
+              width: 20,
+              height: 20,
+              child: SvgPicture.asset(
+                "assets/svg/$icon.svg",
                 height: 20,
-                // child: Image.asset(
-                //   icon,
-                //   height: 20,
-                //   width: 20,
-                //   fit: BoxFit.contain,
-                //   color: AppColors.lightGreyColor,
-                // ),
-                ),
+                width: 20,
+                fit: BoxFit.contain,
+                color: AppColors.textColor1,
+              ),
+            ),
             suffixIcon: rightIcon,
             hintStyle: TextStyle(
                 fontSize: 12,

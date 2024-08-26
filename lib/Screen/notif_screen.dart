@@ -1,11 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:remindits/Screen/home_screen.dart';
+// import 'package:remindits/Screen/home_screen.dart';
 import 'package:remindits/services/notification_logic.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/add_reminder.dart';
+import 'package:remindits/widgets/delete_reminder.dart';
+import 'package:remindits/widgets/switcher.dart';
 
 class NotifPage extends StatefulWidget {
   @override
@@ -29,11 +34,10 @@ class _NotifPageState extends State<NotifPage> {
 
   void OnClickedNotification() {
     Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ),
-    );
+        context,
+        MaterialPageRoute(
+          builder: (context) => NotifPage(),
+        ));
   }
 
   @override
@@ -86,68 +90,147 @@ class _NotifPageState extends State<NotifPage> {
           backgroundColor: Color(0xffffffff),
         ),
         backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Container(
-            child: SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 10,
+        body: StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection("user")
+                .doc(user!.uid)
+                .collection('reminder')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
+              if (snapshots.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xff4fa8c5)),
+                  ),
+                );
+              }
+              if (snapshots.data!.docs.isEmpty) {
+                return Center(
+                  child: Text("Nothing to show"),
+                );
+              }
+              final data = snapshots.data;
+              return ListView.builder(
+                itemCount: data?.docs.length,
+                itemBuilder: (context, index) {
+                  Timestamp t = data?.docs[index].get('time');
+                  DateTime date = DateTime.fromMicrosecondsSinceEpoch(
+                      t.microsecondsSinceEpoch);
+                  String formattedTime = DateFormat.jm().format(date);
+                  on = data!.docs[index].get('onOff');
+                  if (on) {
+                    NotificationLogic.showNotification(
+                        dateTime: date,
+                        id: 0,
+                        title: "Reminder Title",
+                        body: "Don\'t forget your reminder");
+                  }
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Card(
+                            child: ListTile(
+                              title: Text(
+                                formattedTime,
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              subtitle: Text("Everyday"),
+                              trailing: Container(
+                                width: 110,
+                                child: Row(
+                                  children: [
+                                    Switcher(
+                                      on,
+                                      user!.uid,
+                                      data.docs[index].id,
+                                      data.docs[index].get('time'),
+                                    ),
+                                    IconButton(
+                                      onPressed: deleteReminder(context,
+                                          data.docs[index].id, user!.uid),
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.circleXmark,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 23),
-                    ListNotif(
-                      name: "Drink Water",
-                      time: "30 minutes",
-                      title: "Its time to drink water",
-                      desc: "Hello Irfa, Its time to drink water",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListNotif(
-                      name: "Eat",
-                      time: "5 Hours",
-                      title: "Its time to Eat",
-                      desc: "Hello Irfa, Its time to Eat",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListNotif(
-                      name: "Stretching",
-                      time: "1 hour",
-                      title: "Its time to stretch",
-                      desc: "Hello Irfa, Its time to Stretch",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListNotif(
-                      name: "Drink Water",
-                      time: "30 minutes",
-                      title: "Its time to drink water",
-                      desc: "Hello Irfa, Its time to drink water",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ListNotif(
-                      name: "Eat",
-                      time: "5 Hours",
-                      title: "Its time to Eat",
-                      desc: "Hello Irfa, Its time to Eat",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                  ],
-                ),
-              ),
+                  );
+                },
+              );
+            }
+            // SafeArea(
+            //   child: Container(
+            //     child: SingleChildScrollView(
+            //       child: Center(
+            //         child: Column(
+            //           crossAxisAlignment: CrossAxisAlignment.center,
+            //           children: [
+            //             SizedBox(
+            //               height: 10,
+            //             ),
+            //             SizedBox(height: 23),
+            //             ListNotif(
+            //               name: "Drink Water",
+            //               time: "30 minutes",
+            //               title: "Its time to drink water",
+            //               desc: "Hello Irfa, Its time to drink water",
+            //             ),
+            //             SizedBox(
+            //               height: 15,
+            //             ),
+            //             ListNotif(
+            //               name: "Eat",
+            //               time: "5 Hours",
+            //               title: "Its time to Eat",
+            //               desc: "Hello Irfa, Its time to Eat",
+            //             ),
+            //             SizedBox(
+            //               height: 15,
+            //             ),
+            //             ListNotif(
+            //               name: "Stretching",
+            //               time: "1 hour",
+            //               title: "Its time to stretch",
+            //               desc: "Hello Irfa, Its time to Stretch",
+            //             ),
+            //             SizedBox(
+            //               height: 15,
+            //             ),
+            //             ListNotif(
+            //               name: "Drink Water",
+            //               time: "30 minutes",
+            //               title: "Its time to drink water",
+            //               desc: "Hello Irfa, Its time to drink water",
+            //             ),
+            //             SizedBox(
+            //               height: 15,
+            //             ),
+            //             ListNotif(
+            //               name: "Eat",
+            //               time: "5 Hours",
+            //               title: "Its time to Eat",
+            //               desc: "Hello Irfa, Its time to Eat",
+            //             ),
+            //             SizedBox(
+            //               height: 15,
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             ),
-          ),
-        ),
       ),
     );
   }

@@ -93,7 +93,7 @@ class _RegistPageState extends State<RegistPage> {
                   RoundTextField(
                     textEditingController: _firstNameController,
                     hintText: "First Name",
-                    // icon: "assets\png\key-liness.png",
+                    icon: "Message",
                     textInputType: TextInputType.name,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -108,7 +108,7 @@ class _RegistPageState extends State<RegistPage> {
                   RoundTextField(
                     textEditingController: _lastNameController,
                     hintText: "Last Name",
-                    // icon: "assets\png\key-liness.png",
+                    icon: "Message",
                     textInputType: TextInputType.name,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -123,7 +123,7 @@ class _RegistPageState extends State<RegistPage> {
                   RoundTextField(
                     textEditingController: _emailController,
                     hintText: "Email",
-                    // icon: "assets\png\key-liness.png",
+                    icon: "Message",
                     textInputType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -138,7 +138,7 @@ class _RegistPageState extends State<RegistPage> {
                   RoundTextField(
                     textEditingController: _passwordController,
                     hintText: "Password",
-                    // icon: "assets\png\key-2-line.png",
+                    icon: "Lock",
                     textInputType: TextInputType.text,
                     isObsecureText: _isObsecure,
                     validator: (value) {
@@ -158,6 +158,10 @@ class _RegistPageState extends State<RegistPage> {
                         );
                       },
                       child: Container(
+                        child: Icon(
+                          _isObsecure ? Icons.visibility : Icons.visibility_off,
+                          size: 20,
+                        ),
                         alignment: Alignment.center,
                         height: 20,
                         width: 20,

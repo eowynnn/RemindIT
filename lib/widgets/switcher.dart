@@ -8,7 +8,7 @@ class Switcher extends StatefulWidget {
   Timestamp timestamp;
   String id;
 
-  Switcher(this.onOff, this.uid, this.timestamp, this.id);
+  Switcher(this.onOff, this.uid, this.id, this.timestamp);
 
   @override
   State<Switcher> createState() => _SwitcherState();

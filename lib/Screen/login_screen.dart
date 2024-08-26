@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                   RoundTextField(
                     textEditingController: _emailController,
                     hintText: "Email",
-                    // icon: "assets\png\key-liness.png",
+                    icon: "Message",
                     textInputType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                   RoundTextField(
                     textEditingController: _passController,
                     hintText: "Password",
-                    // icon: "assets\png\key-2-line.png",
+                    icon: "Lock",
                     textInputType: TextInputType.text,
                     isObsecureText: _isObsecure,
                     validator: (value) {
