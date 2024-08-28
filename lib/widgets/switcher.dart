@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:remindits/model/reminder_model.dart';
+import 'package:remindits/services/notification_logic.dart';
 
 class Switcher extends StatefulWidget {
   bool onOff;
@@ -19,9 +20,14 @@ class _SwitcherState extends State<Switcher> {
   Widget build(BuildContext context) {
     return Switch(
       onChanged: (bool value){
+        // if (value){
+        //   NotificationLogic.showNotification(id: widget.id.toString(), dateTime: widget.timestamp.toDate());
+        // }else {
+        //   NotificationLogic.cancelNotification(id: widget.id);
+        // }
         ReminderModel reminderModel = ReminderModel();
         reminderModel.onOff = value;
-        reminderModel.timestamp = widget.timestamp;
+        reminderModel.time = widget.timestamp;
         FirebaseFirestore.instance
             .collection('users')
             .doc(widget.uid)

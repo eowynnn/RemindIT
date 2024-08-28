@@ -183,8 +183,8 @@ class _RegistPageState extends State<RegistPage> {
                         },
                         icon: Icon(
                           _isCheck
-                              ? Icons.check_box
-                              : Icons.check_box_outline_blank,
+                              ? Icons.check_box_outline_blank
+                              : Icons.check_box,
                           color: AppColors.textGrayColor,
                         ),
                       ),

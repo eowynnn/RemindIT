@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ReminderModel {
-  Timestamp? timestamp;
+  Timestamp? time;
   bool? onOff;
 
-  ReminderModel({this.timestamp, this.onOff});
+  ReminderModel({this.time, this.onOff});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'timestamp': timestamp,
+    return {
+      'time': time,
       'onOff': onOff,
     };
   }
 
   factory ReminderModel.fromMap(map) {
     return ReminderModel(
-      timestamp: map['time'],
+      time: map['time'],
       onOff: map['onOff'],
     );
   }

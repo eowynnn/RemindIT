@@ -14,7 +14,7 @@ addReminder(BuildContext context, String uid) {
           DateTime(d.year, d.month, d.day, time.hour, time.minute);
       Timestamp timestamp = Timestamp.fromDate(dateTime);
       ReminderModel reminderModel = ReminderModel();
-      reminderModel.timestamp = timestamp;
+      reminderModel.time = timestamp;
       reminderModel.onOff = false;
       FirebaseFirestore.instance
           .collection('users')
