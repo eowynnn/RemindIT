@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:remindits/model/reminder_model.dart';
-import 'package:remindits/services/notification_logic.dart';
+import 'package:remindits/utils/app_colors.dart';
+// import 'package:remindits/services/notification_logic.dart';
 
 class Switcher extends StatefulWidget {
   bool onOff;
@@ -19,7 +20,8 @@ class _SwitcherState extends State<Switcher> {
   @override
   Widget build(BuildContext context) {
     return Switch(
-      onChanged: (bool value){
+      activeColor: AppColors.primaryColor1,
+      onChanged: (bool value) {
         // if (value){
         //   NotificationLogic.showNotification(id: widget.id.toString(), dateTime: widget.timestamp.toDate());
         // }else {

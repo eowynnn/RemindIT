@@ -44,196 +44,137 @@ class _NotifPageState extends State<NotifPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-          onPressed: () async {
-            addReminder(context, user!.uid);
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: AppColors.primaryButton,
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-              borderRadius: BorderRadius.circular(100),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 5,
-                  blurRadius: 10,
-                  offset: Offset(0, 0),
-                ),
-              ],
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        onPressed: () async {
+          addReminder(context, user!.uid);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: AppColors.primaryButton,
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
             ),
-            child: Center(
-              child: Icon(
-                Ionicons.add,
-                color: Colors.white,
-                size: 30,
+            borderRadius: BorderRadius.circular(100),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                spreadRadius: 5,
+                blurRadius: 10,
+                offset: Offset(0, 0),
               ),
+            ],
+          ),
+          child: Center(
+            child: Icon(
+              Ionicons.add,
+              color: Colors.white,
+              size: 30,
             ),
           ),
         ),
-        appBar: AppBar(
-          title: Text(
-            "Notifications",
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w700,
-              fontFamily: "SFProText",
-            ),
+      ),
+      appBar: AppBar(
+        title: Text(
+          "Notifications",
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w700,
+            fontFamily: "SFProText",
           ),
-          centerTitle: true,
-          backgroundColor: Color(0xffffffff),
         ),
-        backgroundColor: Colors.white,
-        body: StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance
-                .collection("users")
-                .doc(user!.uid)
-                .collection('reminder')
-                .snapshots(),
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
-              if (snapshots.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xff4fa8c5)),
-                  ),
-                );
+        centerTitle: true,
+        backgroundColor: Color(0xffffffff),
+      ),
+      backgroundColor: Colors.white,
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection("users")
+            .doc(user!.uid)
+            .collection('reminder')
+            .snapshots(),
+        builder:
+            (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
+          if (snapshots.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xff4fa8c5)),
+              ),
+            );
+          }
+          if (snapshots.data!.docs.isEmpty) {
+            return Center(
+              child: Text("Nothing to show"),
+            );
+          }
+          final data = snapshots.data;
+          return ListView.builder(
+            itemCount: data?.docs.length,
+            itemBuilder: (context, index) {
+              Timestamp t = data?.docs[index].get('time');
+              DateTime date =
+                  DateTime.fromMicrosecondsSinceEpoch(t.microsecondsSinceEpoch);
+              String formattedTime = DateFormat.jm().format(date);
+              on = data!.docs[index].get('onOff');
+              if (on) {
+                NotificationLogic.showNotification(
+                    dateTime: date,
+                    id: 0,
+                    title: "Reminder Title",
+                    body: "Don\'t forget your reminder");
               }
-              if (snapshots.data!.docs.isEmpty) {
-                return Center(
-                  child: Text("Nothing to show"),
-                );
-              }
-              final data = snapshots.data;
-              return ListView.builder(
-                itemCount: data?.docs.length,
-                itemBuilder: (context, index) {
-                  Timestamp t = data?.docs[index].get('time');
-                  DateTime date = DateTime.fromMicrosecondsSinceEpoch(
-                      t.microsecondsSinceEpoch);
-                  String formattedTime = DateFormat.jm().format(date);
-                  on = data!.docs[index].get('onOff');
-                  if (on) {
-                    NotificationLogic.showNotification(
-                        dateTime: date,
-                        id: 0,
-                        title: "Reminder Title",
-                        body: "Don\'t forget your reminder");
-                  }
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(8),
-                          child: Card(
-                            child: ListTile(
-                              title: Text(
-                                formattedTime,
-                                style: TextStyle(fontSize: 30),
-                              ),
-                              subtitle: Text("Everyday"),
-                              trailing: Container(
-                                width: 110,
-                                child: Row(
-                                  children: [
-                                    Switcher(
-                                      on,
-                                      user!.uid,
-                                      data.docs[index].id,
-                                      data.docs[index].get('time'),
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Container(
+                        height: 250,
+                        child: Card(
+                          child: ListTile(
+                            title: Text(
+                              formattedTime,
+                              style: TextStyle(fontSize: 30),
+                            ),
+                            subtitle: Text("Everyday"),
+                            trailing: Container(
+                              width: 110,
+                              child: Row(
+                                children: [
+                                  Switcher(
+                                    on,
+                                    user!.uid,
+                                    data.docs[index].id,
+                                    data.docs[index].get('time'),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      deleteReminder(
+                                        context,
+                                        data.docs[index].id,
+                                        user!.uid,
+                                      );
+                                    },
+                                    icon: FaIcon(
+                                      FontAwesomeIcons.circleXmark,
                                     ),
-                                    IconButton(
-                                      onPressed: () {}
-                                      // deleteReminder(context,
-                                      //     data.docs[index].id, user!.uid)
-                                      ,
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.circleXmark,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  );
-                },
+                  ],
+                ),
               );
-            }
-            //       SafeArea(
-            //     child: Container(
-            //       child: SingleChildScrollView(
-            //         child: Center(
-            //           child: Column(
-            //             crossAxisAlignment: CrossAxisAlignment.center,
-            //             children: [
-            //               SizedBox(
-            //                 height: 10,
-            //               ),
-            //               SizedBox(height: 23),
-            //               ListNotif(
-            //                 name: "Drink Water",
-            //                 time: "30 minutes",
-            //                 title: "Its time to drink water",
-            //                 desc: "Hello Irfa, Its time to drink water",
-            //               ),
-            //               SizedBox(
-            //                 height: 15,
-            //               ),
-            //               ListNotif(
-            //                 name: "Eat",
-            //                 time: "5 Hours",
-            //                 title: "Its time to Eat",
-            //                 desc: "Hello Irfa, Its time to Eat",
-            //               ),
-            //               SizedBox(
-            //                 height: 15,
-            //               ),
-            //               ListNotif(
-            //                 name: "Stretching",
-            //                 time: "1 hour",
-            //                 title: "Its time to stretch",
-            //                 desc: "Hello Irfa, Its time to Stretch",
-            //               ),
-            //               SizedBox(
-            //                 height: 15,
-            //               ),
-            //               ListNotif(
-            //                 name: "Drink Water",
-            //                 time: "30 minutes",
-            //                 title: "Its time to drink water",
-            //                 desc: "Hello Irfa, Its time to drink water",
-            //               ),
-            //               SizedBox(
-            //                 height: 15,
-            //               ),
-            //               ListNotif(
-            //                 name: "Eat",
-            //                 time: "5 Hours",
-            //                 title: "Its time to Eat",
-            //                 desc: "Hello Irfa, Its time to Eat",
-            //               ),
-            //               SizedBox(
-            //                 height: 15,
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // );
-
-            ));
+            },
+          );
+        },
+      ),
+    );
   }
 }
 
@@ -346,3 +287,68 @@ class ListNotif extends StatelessWidget {
         ]));
   }
 }
+
+
+//       SafeArea(
+//     child: Container(
+//       child: SingleChildScrollView(
+//         child: Center(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               SizedBox(
+//                 height: 10,
+//               ),
+//               SizedBox(height: 23),
+//               ListNotif(
+//                 name: "Drink Water",
+//                 time: "30 minutes",
+//                 title: "Its time to drink water",
+//                 desc: "Hello Irfa, Its time to drink water",
+//               ),
+//               SizedBox(
+//                 height: 15,
+//               ),
+//               ListNotif(
+//                 name: "Eat",
+//                 time: "5 Hours",
+//                 title: "Its time to Eat",
+//                 desc: "Hello Irfa, Its time to Eat",
+//               ),
+//               SizedBox(
+//                 height: 15,
+//               ),
+//               ListNotif(
+//                 name: "Stretching",
+//                 time: "1 hour",
+//                 title: "Its time to stretch",
+//                 desc: "Hello Irfa, Its time to Stretch",
+//               ),
+//               SizedBox(
+//                 height: 15,
+//               ),
+//               ListNotif(
+//                 name: "Drink Water",
+//                 time: "30 minutes",
+//                 title: "Its time to drink water",
+//                 desc: "Hello Irfa, Its time to drink water",
+//               ),
+//               SizedBox(
+//                 height: 15,
+//               ),
+//               ListNotif(
+//                 name: "Eat",
+//                 time: "5 Hours",
+//                 title: "Its time to Eat",
+//                 desc: "Hello Irfa, Its time to Eat",
+//               ),
+//               SizedBox(
+//                 height: 15,
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//   ),
+// );

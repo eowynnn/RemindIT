@@ -22,8 +22,8 @@ deleteReminder(BuildContext context, String id, String uid) {
                     .collection("reminder")
                     .doc(id)
                     .delete();
-
                 Fluttertoast.showToast(msg: "Reminder Deleted");
+                Navigator.pop(context);
               } catch (e) {
                 Fluttertoast.showToast(msg: e.toString());
               }

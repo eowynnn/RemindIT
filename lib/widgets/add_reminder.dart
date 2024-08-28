@@ -42,6 +42,7 @@ addReminder(BuildContext context, String uid) {
             title: Text('Add Reminder'),
             content: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Select a time for reminder"),
                   SizedBox(
@@ -50,12 +51,16 @@ addReminder(BuildContext context, String uid) {
                   MaterialButton(
                     onPressed: () async {
                       TimeOfDay? newTime = await showTimePicker(
-                          context: context, initialTime: TimeOfDay.now());
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                      );
 
                       if (newTime == null) return;
-                      setState(() {
-                        time = newTime;
-                      });
+                      setState(
+                        () {
+                          time = newTime;
+                        },
+                      );
                     },
                     child: Row(
                       children: [
