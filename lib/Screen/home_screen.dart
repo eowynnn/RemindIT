@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             tabs: const [
               GButton(
                 icon: Ionicons.notifications,
-                text: 'Notification',
+                text: 'Reminder',
               ),
               GButton(
                 icon: Ionicons.home,

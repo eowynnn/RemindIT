@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:remindits/utils/app_colors.dart';
 
 deleteReminder(BuildContext context, String id, String uid) {
   return showDialog(
@@ -13,6 +14,12 @@ deleteReminder(BuildContext context, String id, String uid) {
         title: Text('Delete Reminder'),
         content: Text("Are you sure you want to delete this reminder?"),
         actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Cancel",style: TextStyle(color: AppColors.textColor1),),
+          ),
           TextButton(
             onPressed: () {
               try {
@@ -28,13 +35,10 @@ deleteReminder(BuildContext context, String id, String uid) {
                 Fluttertoast.showToast(msg: e.toString());
               }
             },
-            child: Text("Delete"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text("Cancel"),
+            child: Text(
+              "Delete",
+              style: TextStyle(color: Colors.red),
+            ),
           )
         ],
       );

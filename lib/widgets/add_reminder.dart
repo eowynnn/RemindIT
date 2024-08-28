@@ -44,7 +44,7 @@ addReminder(BuildContext context, String uid) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Select a time for reminder"),
+                  Text("Make a new reminder"),
                   SizedBox(
                     height: 20,
                   ),
@@ -90,7 +90,7 @@ addReminder(BuildContext context, String uid) {
                 },
                 child: Text(
                   "Cancel",
-                  style: TextStyle(color: Colors.red),
+                  style: TextStyle(color: AppColors.textColor1),
                 ),
               ),
               TextButton(

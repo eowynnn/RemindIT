@@ -77,7 +77,7 @@ class _NotifPageState extends State<NotifPage> {
       ),
       appBar: AppBar(
         title: Text(
-          "Notifications",
+          "Reminder",
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w700,
