@@ -221,7 +221,7 @@ class _RegistPageState extends State<RegistPage> {
                                 content: Text("Account created successfully"),
                               ),
                             );
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LoginPage(),
@@ -243,7 +243,7 @@ class _RegistPageState extends State<RegistPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => LoginPage(),

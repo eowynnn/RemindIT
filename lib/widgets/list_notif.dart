@@ -12,6 +12,7 @@ class ListNotifWidget extends StatelessWidget {
   final String time;
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
           color: Color(0xffE6F7FF), borderRadius: BorderRadius.circular(12)),
@@ -25,7 +26,7 @@ class ListNotifWidget extends StatelessWidget {
             ),
           ),
           Container(
-            width: 230,
+            width: media.width * 0.55,
             padding: const EdgeInsets.only(left: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

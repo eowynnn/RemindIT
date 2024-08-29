@@ -194,22 +194,23 @@ class ListNotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 150,
-        width: 360,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Color(0xffffffff),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 5,
-              blurRadius: 10,
-              offset: Offset(0, 0), // changes position of shadow
-            ),
-          ],
-        ),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      height: 150,
+      width: 360,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Color(0xffffffff),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 5,
+            blurRadius: 10,
+            offset: Offset(0, 0), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
             child: Column(
@@ -284,7 +285,9 @@ class ListNotif extends StatelessWidget {
               ],
             ),
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }
 

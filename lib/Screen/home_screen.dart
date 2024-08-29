@@ -25,9 +25,11 @@ class _HomePageState extends State<HomePage> {
   ];
 
   void _onTabChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
   }
 
   @override
@@ -90,6 +92,7 @@ class _HomePageState extends State<HomePage> {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var modia = MediaQuery.of(context).size;
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
