@@ -37,7 +37,7 @@ class _ProfilPageState extends State<ProfilPage> {
         ),
         content: TextField(
           autofocus: true,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: AppColors.textColor1),
           decoration: InputDecoration(
             hintText: "Enter new $field",
             hintStyle: TextStyle(color: Colors.grey),
@@ -136,7 +136,7 @@ class _ProfilPageState extends State<ProfilPage> {
                     onPressed: () => editField("lastName"),
                   ),
                   SizedBox(
-                    height: media.height * 0.175,
+                    height: media.height * 0.089,
                   ),
                   Padding(
                     padding: EdgeInsets.all(50),

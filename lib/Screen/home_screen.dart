@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -89,10 +91,17 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final currentUser = FirebaseAuth.instance.currentUser;
+  final userCollection = FirebaseFirestore.instance.collection('users');
   @override
   Widget build(BuildContext context) {
-    var modia = MediaQuery.of(context).size;
+    var media = MediaQuery.of(context).size;
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
@@ -113,13 +122,39 @@ class HomeScreen extends StatelessWidget {
                           fontFamily: "SFProText",
                         ),
                       ),
-                      Text(
-                        "Irfa Rizkya Fardhan",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "SFProText",
-                        ),
+                      StreamBuilder<DocumentSnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection("users")
+                            .doc(currentUser!.uid)
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            final userData = snapshot.data!.data() as Map<String, dynamic>;
+                            return Row(
+                              children: [
+                                Text(
+                                  userData["firstName"],
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "SFProText",
+                                  ),
+                                ),
+                                SizedBox(width: media.width * 0.01,),
+                                Text(
+                                  userData["lastName"],
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "SFProText",
+                                  ),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return CircularProgressIndicator();
+                          }
+                        },
                       ),
                     ],
                   ),
