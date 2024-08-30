@@ -9,8 +9,9 @@ class Switcher extends StatefulWidget {
   String uid;
   Timestamp timestamp;
   String id;
+  bool isPin;
 
-  Switcher(this.onOff, this.uid, this.id, this.timestamp);
+  Switcher(this.onOff, this.uid, this.id, this.timestamp,{this.isPin = false});
 
   @override
   State<Switcher> createState() => _SwitcherState();
@@ -22,14 +23,10 @@ class _SwitcherState extends State<Switcher> {
     return Switch(
       activeColor: AppColors.primaryColor1,
       onChanged: (bool value) {
-        // if (value){
-        //   NotificationLogic.showNotification(id: widget.id.toString(), dateTime: widget.timestamp.toDate());
-        // }else {
-        //   NotificationLogic.cancelNotification(id: widget.id);
-        // }
         ReminderModel reminderModel = ReminderModel();
         reminderModel.onOff = value;
         reminderModel.time = widget.timestamp;
+        reminderModel.isPin = value ? widget.isPin : false;
         FirebaseFirestore.instance
             .collection('users')
             .doc(widget.uid)
@@ -41,3 +38,9 @@ class _SwitcherState extends State<Switcher> {
     );
   }
 }
+
+        // if (value){
+        //   NotificationLogic.showNotification(id: widget.id.toString(), dateTime: widget.timestamp.toDate());
+        // }else {
+        //   NotificationLogic.cancelNotification(id: widget.id);
+        // }

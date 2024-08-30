@@ -109,54 +109,49 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Welcome back,",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: "SFProText",
-                        ),
-                      ),
-                      StreamBuilder<DocumentSnapshot>(
-                        stream: FirebaseFirestore.instance
-                            .collection("users")
-                            .doc(currentUser!.uid)
-                            .snapshots(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            final userData = snapshot.data!.data() as Map<String, dynamic>;
-                            return Row(
-                              children: [
-                                Text(
-                                  userData["firstName"],
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "SFProText",
-                                  ),
-                                ),
-                                SizedBox(width: media.width * 0.01,),
-                                Text(
-                                  userData["lastName"],
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "SFProText",
-                                  ),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return CircularProgressIndicator();
-                          }
-                        },
-                      ),
-                    ],
+                  Text(
+                    "Welcome back,",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: "SFProText",
+                    ),
+                  ),
+                  StreamBuilder<DocumentSnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("users")
+                        .doc(currentUser!.uid)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final userData = snapshot.data!.data() as Map<String, dynamic>;
+                        return Row(
+                          children: [
+                            Text(
+                              userData["firstName"],
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "SFProText",
+                              ),
+                            ),
+                            SizedBox(width: media.width * 0.01,),
+                            Text(
+                              userData["lastName"],
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "SFProText",
+                              ),
+                            ),
+                          ],
+                        );
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                    },
                   ),
                 ],
               ),
@@ -165,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Center(
                 child: Container(
-                  width: 340,
+                  width: media.width * 0.9,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Color(0xffffffff),
@@ -173,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.1),
                         spreadRadius: 5,
-                        blurRadius: 10,
+                        blurRadius: 5,
                         offset: Offset(0, 0),
                       ),
                     ],

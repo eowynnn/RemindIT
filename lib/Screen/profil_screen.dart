@@ -77,7 +77,7 @@ class _ProfilPageState extends State<ProfilPage> {
       appBar: AppBar(
         title: Text(
           "Profile",
-          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700,fontFamily: "SFProText"),
         ),
         centerTitle: true,
         backgroundColor: Color(0xffffffff),
