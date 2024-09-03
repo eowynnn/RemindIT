@@ -21,7 +21,11 @@ addReminder(BuildContext context, String uid) {
       reminderModel.onOff = false;
       reminderModel.isPin = false;
       reminderModel.title = titleController.text;
-      reminderModel.description = descController.text;
+      if (descController.text.isNotEmpty){
+        reminderModel.description = descController.text;
+      } else {
+        reminderModel.description = 'Reminders';
+      }
       FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
