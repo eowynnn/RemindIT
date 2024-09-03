@@ -117,13 +117,15 @@ class _NotifPageState extends State<NotifPage> {
               DateTime date =
                   DateTime.fromMicrosecondsSinceEpoch(t.microsecondsSinceEpoch);
               String formattedTime = DateFormat.jm().format(date);
-              on = data!.docs[index].get('onOff');
+              String title = data!.docs[index].get('title');
+              String descriptions = data.docs[index].get('description');
+              on = data.docs[index].get('onOff');
               if (on) {
                 NotificationLogic.showNotification(
                     dateTime: date,
                     id: 0,
-                    title: "Reminder Title",
-                    body: "Don\'t forget your reminder");
+                    title: title,
+                    body: descriptions);
               }
               return SingleChildScrollView(
                 child: Padding(
@@ -156,11 +158,19 @@ class _NotifPageState extends State<NotifPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Reminder Title",
+                                      title,
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontFamily: "SFProText",
                                         fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: media.height * 0.001,),
+                                    Text(
+                                      descriptions,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: "SFProText",
                                       ),
                                     ),
                                     Text(
@@ -179,6 +189,8 @@ class _NotifPageState extends State<NotifPage> {
                                         user!.uid,
                                         data.docs[index].id,
                                         data.docs[index].get('time'),
+                                        data.docs[index].get('title'),
+                                        data.docs[index].get('description'),
                                       ),
                                       IconButton(
                                         onPressed: () {

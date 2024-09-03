@@ -6,7 +6,10 @@ import 'package:remindits/model/reminder_model.dart';
 import 'package:remindits/utils/app_colors.dart';
 
 addReminder(BuildContext context, String uid) {
+  
   TimeOfDay time = TimeOfDay.now();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descController = TextEditingController();
   add(String uid, TimeOfDay time) {
     try {
       DateTime d = DateTime.now();
@@ -17,6 +20,8 @@ addReminder(BuildContext context, String uid) {
       reminderModel.time = timestamp;
       reminderModel.onOff = false;
       reminderModel.isPin = false;
+      reminderModel.title = titleController.text;
+      reminderModel.description = descController.text;
       FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
@@ -49,6 +54,53 @@ addReminder(BuildContext context, String uid) {
                   SizedBox(
                     height: 20,
                   ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.lightGreyColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: TextFormField(
+                      controller: titleController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        hintText: 'Add title',
+                        hintStyle: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.textColor1,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: AppColors.lightGreyColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: TextFormField(
+                      controller: descController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        hintText: 'Add Description',
+                        hintStyle: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.textColor1,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
                   MaterialButton(
                     onPressed: () async {
                       TimeOfDay? newTime = await showTimePicker(
