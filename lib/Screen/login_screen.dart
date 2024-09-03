@@ -29,15 +29,18 @@ class _LoginPageState extends State<LoginPage> {
       User? user = userCredential.user;
 
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ));
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
       return user;
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Login Failed"),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Login Failed"),
+        ),
+      );
       return null;
     }
   }

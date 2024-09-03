@@ -14,15 +14,19 @@ class RoundGradientButton extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: AppColors.primaryButton,
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight),
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black26, blurRadius: 2, offset: Offset(0, 2))
-            ]),
+          gradient: LinearGradient(
+              colors: AppColors.primaryButton,
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight),
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
         child: MaterialButton(
           onPressed: onPressed,
           minWidth: double.maxFinite,
@@ -34,9 +38,10 @@ class RoundGradientButton extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-                fontSize: 16,
-                color: AppColors.whiteColor,
-                fontWeight: FontWeight.w700),
+              fontSize: 16,
+              color: AppColors.whiteColor,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ),
