@@ -14,8 +14,13 @@ class _onBoardingState extends State<onBoarding> {
       body: PageView.builder(
           itemCount: 3,
           itemBuilder: (_, i) {
-            return Column(
-              children: [],
+            return Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Column(
+                children: [
+                  Image.asset("assets\png\logo.png"),
+                ],
+              ),
             );
           }),
     );
