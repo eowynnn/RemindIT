@@ -228,6 +228,7 @@ class _NotifPageState extends State<NotifPage> {
                                   SvgPicture.asset(
                                     "assets/svg/pushpin-fill.svg",
                                     width: 20,
+                                    // ignore: deprecated_member_use
                                     color: AppColors.primaryColor1,
                                   ),
                                   SizedBox(width: 9),
