@@ -200,6 +200,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         name: "breakfast",
                         time: "08:00",
                       ),
+                      SizedBox(height: 10),
+                      ListNotifWidget(
+                        no: "1",
+                        name: "breakfast",
+                        time: "08:00",
+                      ),
+                      SizedBox(height: 10),
+                      ListNotifWidget(
+                        no: "1",
+                        name: "breakfast",
+                        time: "08:00",
+                      ),
                     ],
                   ),
                 ),
