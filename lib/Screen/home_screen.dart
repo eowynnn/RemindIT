@@ -239,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         Text(1.toString()),
                                         Container(
-                                          width: media.width * 0.55,
+                                          width: media.width * 0.52,
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Column(
