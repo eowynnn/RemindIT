@@ -11,10 +11,12 @@ class Switcher extends StatefulWidget {
   Timestamp timestamp;
   String id;
   bool isPin;
-final String title;
-final String description;
+  final String title;
+  final String description;
 
-  Switcher(this.onOff, this.uid, this.id, this.timestamp,this.title,this.description,{this.isPin = false});
+  Switcher(this.onOff, this.uid, this.id, this.timestamp, this.title,
+      this.description,
+      {this.isPin = false});
 
   @override
   State<Switcher> createState() => _SwitcherState();
@@ -37,10 +39,11 @@ class _SwitcherState extends State<Switcher> {
             .doc(widget.uid)
             .collection('reminder')
             .doc(widget.id)
-            .set(reminderModel.toMap());
+            .set(
+              reminderModel.toMap(),
+            );
       },
       value: widget.onOff,
     );
   }
 }
-
