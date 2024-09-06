@@ -43,6 +43,8 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   flutter_local_notifications: ^17.2.2
   firebase_messaging: ^15.0.4
+  http: ^1.2.2
+  beautiful_soup_dart: ^0.3.0
 
 dev_dependencies:
   flutter_test:
