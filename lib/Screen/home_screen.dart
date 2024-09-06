@@ -237,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         vertical: 16, horizontal: 10),
                                     child: Row(
                                       children: [
-                                        Text(1.toString()),
+                                        Text('1'),
                                         Container(
                                           width: media.width * 0.52,
                                           padding:
