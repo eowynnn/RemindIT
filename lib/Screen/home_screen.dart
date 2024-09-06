@@ -199,41 +199,82 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       SizedBox(height: 10),
-                      // StreamBuilder<QuerySnapshot>(
-                      //   stream: FirebaseFirestore.instance
-                      //       .collection('users')
-                      //       .doc(currentUser!.uid)
-                      //       .collection('reminder')
-                      //       .snapshots(),
-                      //   builder: (BuildContext context,
-                      //       AsyncSnapshot<QuerySnapshot> snapshots) {
-                      //     if (snapshots.connectionState ==
-                      //         ConnectionState.waiting) {
-                      //       return CircularProgressIndicator();
-                      //     }
-                      //     if (snapshots.data!.docs.isEmpty) {
-                      //       return Text("No reminders yet");
-                      //     }
-                      //     final data = snapshots.data;
-                      //     return ListView.builder(
-                      //       itemCount: data?.docs.length,
-                      //       itemBuilder: (context, index) {
-                      //         Timestamp t = data?.docs[index].get('time');
-                      //         DateTime date =
-                      //             DateTime.fromMicrosecondsSinceEpoch(
-                      //                 t.microsecondsSinceEpoch);
-                      //         String formattedTime =
-                      //             DateFormat.jm().format(date);
-                      //         String title = data!.docs[index].get('title');
-                      //         String descriptions =
-                      //             data.docs[index].get('description');
-                      //         return Center(
-                      //           child: Text(title),
-                      //         );
-                      //       },
-                      //     );
-                      //   },
-                      // ),
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(currentUser!.uid)
+                            .collection('reminder')
+                            .snapshots(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<QuerySnapshot> snapshots) {
+                          if (snapshots.connectionState ==
+                              ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          }
+                          if (snapshots.data!.docs.isEmpty) {
+                            return Text("No reminders yet");
+                          }
+                          final data = snapshots.data;
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: data?.docs.length,
+                            itemBuilder: (context, index) {
+                              Timestamp t = data?.docs[index].get('time');
+                              DateTime date =
+                                  DateTime.fromMicrosecondsSinceEpoch(
+                                      t.microsecondsSinceEpoch);
+                              String formattedTime =
+                                  DateFormat.jm().format(date);
+                              String title = data!.docs[index].get('title');
+                              return Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Color(0xffE6F7FF),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 16, horizontal: 10),
+                                    child: Row(
+                                      children: [
+                                        Text(1.toString()),
+                                        Container(
+                                          width: media.width * 0.55,
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                title,
+                                                style: TextStyle(
+                                                  fontFamily: "SFProText",
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Text(
+                                          formattedTime,
+                                          style: TextStyle(
+                                            fontFamily: "SFProText",
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
