@@ -155,7 +155,7 @@ class _ProfilPageState extends State<ProfilPage> {
                     onPressed: () => editField("lastName"),
                   ),
                   SizedBox(
-                    height: media.height * 0.060,
+                    height: media.height * 0.020,
                   ),
                   Padding(
                     padding: EdgeInsets.all(50),
@@ -163,17 +163,16 @@ class _ProfilPageState extends State<ProfilPage> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: AppColors.primaryButton,
-                                  begin: Alignment.bottomLeft,
-                                  end: Alignment.topRight),
-                              borderRadius: BorderRadius.circular(25),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 2))
-                              ],),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.red),
+                            borderRadius: BorderRadius.circular(25),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 2,
+                                  offset: Offset(0, 2))
+                            ],
+                          ),
                           child: MaterialButton(
                             onPressed: _deleteAcc,
                             minWidth: double.maxFinite,
@@ -186,25 +185,41 @@ class _ProfilPageState extends State<ProfilPage> {
                               "Delete Account",
                               style: TextStyle(
                                   fontSize: 16,
-                                  color: AppColors.whiteColor,
+                                  color: Colors.red,
                                   fontWeight: FontWeight.w700),
                             ),
                           ),
                         ),
-                        MaterialButton(
-                          onPressed: _signOut,
-                          minWidth: double.maxFinite,
-                          height: 50,
-                          shape: RoundedRectangleBorder(
+                        SizedBox(height: 10,),
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: AppColors.primaryButton,
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight),
                             borderRadius: BorderRadius.circular(25),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 2,
+                                  offset: Offset(0, 2))
+                            ],
                           ),
-                          textColor: AppColors.textColor1,
-                          child: Text(
-                            "Sign Out",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: AppColors.whiteColor,
-                                fontWeight: FontWeight.w700),
+                          child: MaterialButton(
+                            onPressed: _signOut,
+                            minWidth: double.maxFinite,
+                            height: 50,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            textColor: AppColors.textColor1,
+                            child: Text(
+                              "Sign Out",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColors.whiteColor,
+                                  fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
                       ],
