@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
@@ -126,7 +127,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        final userData = snapshot.data!.data() as Map<String, dynamic>;
+                        final userData =
+                            snapshot.data!.data() as Map<String, dynamic>;
                         return Row(
                           children: [
                             Text(
@@ -137,7 +139,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontFamily: "SFProText",
                               ),
                             ),
-                            SizedBox(width: media.width * 0.01,),
+                            SizedBox(
+                              width: media.width * 0.01,
+                            ),
                             Text(
                               userData["lastName"],
                               style: TextStyle(
@@ -195,23 +199,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       SizedBox(height: 10),
-                      ListNotifWidget(
-                        no: "1",
-                        name: "breakfast",
-                        time: "08:00",
-                      ),
-                      SizedBox(height: 10),
-                      ListNotifWidget(
-                        no: "1",
-                        name: "breakfast",
-                        time: "08:00",
-                      ),
-                      SizedBox(height: 10),
-                      ListNotifWidget(
-                        no: "1",
-                        name: "breakfast",
-                        time: "08:00",
-                      ),
+                      // StreamBuilder<QuerySnapshot>(
+                      //   stream: FirebaseFirestore.instance
+                      //       .collection('users')
+                      //       .doc(currentUser!.uid)
+                      //       .collection('reminder')
+                      //       .snapshots(),
+                      //   builder: (BuildContext context,
+                      //       AsyncSnapshot<QuerySnapshot> snapshots) {
+                      //     if (snapshots.connectionState ==
+                      //         ConnectionState.waiting) {
+                      //       return CircularProgressIndicator();
+                      //     }
+                      //     if (snapshots.data!.docs.isEmpty) {
+                      //       return Text("No reminders yet");
+                      //     }
+                      //     final data = snapshots.data;
+                      //     return ListView.builder(
+                      //       itemCount: data?.docs.length,
+                      //       itemBuilder: (context, index) {
+                      //         Timestamp t = data?.docs[index].get('time');
+                      //         DateTime date =
+                      //             DateTime.fromMicrosecondsSinceEpoch(
+                      //                 t.microsecondsSinceEpoch);
+                      //         String formattedTime =
+                      //             DateFormat.jm().format(date);
+                      //         String title = data!.docs[index].get('title');
+                      //         String descriptions =
+                      //             data.docs[index].get('description');
+                      //         return Center(
+                      //           child: Text(title),
+                      //         );
+                      //       },
+                      //     );
+                      //   },
+                      // ),
                     ],
                   ),
                 ),
