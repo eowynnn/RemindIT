@@ -9,7 +9,6 @@ import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
 import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/artickle.dart';
-import 'package:remindits/widgets/list_notif.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -204,6 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             .collection('users')
                             .doc(currentUser!.uid)
                             .collection('reminder')
+                            .where('isPin', isEqualTo: true)
                             .snapshots(),
                         builder: (BuildContext context,
                             AsyncSnapshot<QuerySnapshot> snapshots) {
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             return CircularProgressIndicator();
                           }
                           if (snapshots.data!.docs.isEmpty) {
-                            return Text("No reminders yet");
+                            return Text("No Pinned Reminders");
                           }
                           final data = snapshots.data;
                           return ListView.builder(
