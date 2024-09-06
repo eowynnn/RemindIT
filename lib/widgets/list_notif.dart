@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ListNotifWidget extends StatelessWidget {
+class ListNotifWidget extends StatefulWidget {
   const ListNotifWidget({
     super.key,
     required this.no,
@@ -10,6 +10,12 @@ class ListNotifWidget extends StatelessWidget {
   final String no;
   final String name;
   final String time;
+
+  @override
+  State<ListNotifWidget> createState() => _ListNotifWidgetState();
+}
+
+class _ListNotifWidgetState extends State<ListNotifWidget> {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -20,7 +26,7 @@ class ListNotifWidget extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            no,
+            widget.no,
             style: TextStyle(
               fontFamily: "SFProText",
             ),
@@ -32,7 +38,7 @@ class ListNotifWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  widget.name,
                   style: TextStyle(
                     fontFamily: "SFProText",
                   ),
@@ -41,7 +47,7 @@ class ListNotifWidget extends StatelessWidget {
             ),
           ),
           Text(
-            time,
+            widget.time,
             style: TextStyle(
               fontFamily: "SFProText",
             ),

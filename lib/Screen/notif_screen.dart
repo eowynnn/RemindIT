@@ -100,7 +100,9 @@ class _NotifPageState extends State<NotifPage> {
           if (snapshots.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xff4fa8c5)),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  Color(0xff4fa8c5),
+                ),
               ),
             );
           }
@@ -122,10 +124,7 @@ class _NotifPageState extends State<NotifPage> {
               on = data.docs[index].get('onOff');
               if (on) {
                 NotificationLogic.showNotification(
-                    dateTime: date,
-                    id: 0,
-                    title: title,
-                    body: descriptions);
+                    dateTime: date, id: 0, title: title, body: descriptions);
               }
               return SingleChildScrollView(
                 child: Padding(
@@ -165,7 +164,9 @@ class _NotifPageState extends State<NotifPage> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(height: media.height * 0.001,),
+                                    SizedBox(
+                                      height: media.height * 0.001,
+                                    ),
                                     Text(
                                       descriptions,
                                       style: TextStyle(
@@ -211,7 +212,9 @@ class _NotifPageState extends State<NotifPage> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: media.height * 0.02,),
+                            SizedBox(
+                              height: media.height * 0.02,
+                            ),
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
@@ -228,7 +231,13 @@ class _NotifPageState extends State<NotifPage> {
                                     color: AppColors.primaryColor1,
                                   ),
                                   SizedBox(width: 9),
-                                  Text("On",style: TextStyle(fontFamily: "SFProText",color: AppColors.textColor1,fontWeight: FontWeight.bold),)
+                                  Text(
+                                    "On",
+                                    style: TextStyle(
+                                        fontFamily: "SFProText",
+                                        color: AppColors.textColor1,
+                                        fontWeight: FontWeight.bold),
+                                  )
                                 ],
                               ),
                             ),
