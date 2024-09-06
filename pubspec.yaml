@@ -45,6 +45,7 @@ dependencies:
   firebase_messaging: ^15.0.4
   http: ^1.2.2
   beautiful_soup_dart: ^0.3.0
+  flutter_native_splash: ^2.4.1
 
 dev_dependencies:
   flutter_test:
