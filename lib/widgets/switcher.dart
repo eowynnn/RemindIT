@@ -4,6 +4,7 @@ import 'package:remindits/model/reminder_model.dart';
 import 'package:remindits/utils/app_colors.dart';
 // import 'package:remindits/services/notification_logic.dart';
 
+// ignore: must_be_immutable
 class Switcher extends StatefulWidget {
   bool onOff;
   String uid;
@@ -43,8 +44,3 @@ class _SwitcherState extends State<Switcher> {
   }
 }
 
-        // if (value){
-        //   NotificationLogic.showNotification(id: widget.id.toString(), dateTime: widget.timestamp.toDate());
-        // }else {
-        //   NotificationLogic.cancelNotification(id: widget.id);
-        // }
