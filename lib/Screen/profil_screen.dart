@@ -16,6 +16,7 @@ class ProfilPage extends StatefulWidget {
 class _ProfilPageState extends State<ProfilPage> {
   final currentUser = FirebaseAuth.instance.currentUser;
   final userCollection = FirebaseFirestore.instance.collection('users');
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
@@ -23,6 +24,21 @@ class _ProfilPageState extends State<ProfilPage> {
       context,
       MaterialPageRoute(builder: (context) => LoginPage()),
     );
+  }
+
+  void _deleteAcc() async {
+    try {
+      await _auth.currentUser!.delete();
+      print('Akun berhasil dihapus');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ),
+      );
+    } catch (e) {
+      print('Error: $e');
+    }
   }
 
   Future<void> editField(String field) async {
@@ -77,7 +93,10 @@ class _ProfilPageState extends State<ProfilPage> {
       appBar: AppBar(
         title: Text(
           "Profile",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700,fontFamily: "SFProText"),
+          style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              fontFamily: "SFProText"),
         ),
         centerTitle: true,
         backgroundColor: Color(0xffffffff),
@@ -136,41 +155,61 @@ class _ProfilPageState extends State<ProfilPage> {
                     onPressed: () => editField("lastName"),
                   ),
                   SizedBox(
-                    height: media.height * 0.089,
+                    height: media.height * 0.060,
                   ),
                   Padding(
                     padding: EdgeInsets.all(50),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: AppColors.primaryButton,
-                              begin: Alignment.bottomLeft,
-                              end: Alignment.topRight),
-                          borderRadius: BorderRadius.circular(25),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black26,
-                                blurRadius: 2,
-                                offset: Offset(0, 2))
-                          ]),
-                      child: MaterialButton(
-                        onPressed: _signOut,
-                        minWidth: double.maxFinite,
-                        height: 50,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: AppColors.primaryButton,
+                                  begin: Alignment.bottomLeft,
+                                  end: Alignment.topRight),
+                              borderRadius: BorderRadius.circular(25),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 2,
+                                    offset: Offset(0, 2))
+                              ],),
+                          child: MaterialButton(
+                            onPressed: _deleteAcc,
+                            minWidth: double.maxFinite,
+                            height: 50,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            textColor: AppColors.textColor1,
+                            child: Text(
+                              "Delete Account",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColors.whiteColor,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
                         ),
-                        textColor: AppColors.textColor1,
-                        child: Text(
-                          "Sign Out",
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: AppColors.whiteColor,
-                              fontWeight: FontWeight.w700),
+                        MaterialButton(
+                          onPressed: _signOut,
+                          minWidth: double.maxFinite,
+                          height: 50,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          textColor: AppColors.textColor1,
+                          child: Text(
+                            "Sign Out",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: AppColors.whiteColor,
+                                fontWeight: FontWeight.w700),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  )
+                  ),
                 ],
               ),
             );
