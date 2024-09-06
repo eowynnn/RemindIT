@@ -168,9 +168,10 @@ class _ProfilPageState extends State<ProfilPage> {
                             borderRadius: BorderRadius.circular(25),
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 2,
-                                  offset: Offset(0, 2))
+                                color: Colors.black26,
+                                blurRadius: 2,
+                                offset: Offset(0, 2),
+                              )
                             ],
                           ),
                           child: MaterialButton(
@@ -190,7 +191,9 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -200,9 +203,10 @@ class _ProfilPageState extends State<ProfilPage> {
                             borderRadius: BorderRadius.circular(25),
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 2,
-                                  offset: Offset(0, 2))
+                                color: Colors.black26,
+                                blurRadius: 2,
+                                offset: Offset(0, 2),
+                              )
                             ],
                           ),
                           child: MaterialButton(
