@@ -36,7 +36,6 @@ addReminder(BuildContext context, String uid) {
           .collection('reminder')
           .doc()
           .set(reminderModel.toMap());
-
       Fluttertoast.showToast(msg: 'Reminder Added');
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());

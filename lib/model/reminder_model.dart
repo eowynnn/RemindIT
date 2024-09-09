@@ -6,8 +6,9 @@ class ReminderModel {
   bool? isPin;
   String? title;
   String? description;
+  bool? isPriority;
 
-  ReminderModel({this.time, this.onOff, this.isPin, this.title, this.description});
+  ReminderModel({this.time, this.onOff, this.isPin, this.title, this.description, this.isPriority});
 
   Map<String, dynamic> toMap() {
     return {
@@ -15,7 +16,8 @@ class ReminderModel {
       'onOff': onOff,
       'isPin': isPin,
       'title' : title,
-      'description' : description
+      'description' : description,
+      'isPriority' : isPriority
     };
   }
 
@@ -26,6 +28,7 @@ class ReminderModel {
       isPin: map['isPin'],
       title: map['title'],
       description: map['description'],
+      isPriority: map['isPriority'],
     );
   }
 }
