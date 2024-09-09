@@ -121,6 +121,7 @@ class _NotifPageState extends State<NotifPage> {
               String formattedTime = DateFormat.jm().format(date);
               String title = data!.docs[index].get('title');
               String descriptions = data.docs[index].get('description');
+              bool prio = data.docs[index].get('isPriority');
               on = data.docs[index].get('onOff');
               if (on) {
                 NotificationLogic.showNotification(
@@ -192,20 +193,33 @@ class _NotifPageState extends State<NotifPage> {
                                         data.docs[index].get('time'),
                                         data.docs[index].get('title'),
                                         data.docs[index].get('description'),
+                                        data.docs[index].get('isPriority'),
                                       ),
                                       IconButton(
                                         onPressed: () {
-                                          deleteReminder(
-                                            context,
-                                            data.docs[index].id,
-                                            user!.uid,
-                                          );
+                                          if (prio == true) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                    "Can't delete priority reminder"),
+                                              ),
+                                            );
+                                          } else {
+                                            deleteReminder(
+                                              context,
+                                              data.docs[index].id,
+                                              user!.uid,
+                                            );
+                                          }
                                         },
-                                        icon: FaIcon(
-                                          FontAwesomeIcons.trash,
-                                          color: Colors.red,
-                                          size: 20,
-                                        ),
+                                        icon: prio == false
+                                            ? FaIcon(
+                                                FontAwesomeIcons.trash,
+                                                color: Colors.red,
+                                                size: 20,
+                                              )
+                                            : FaIcon(FontAwesomeIcons.ban),
                                       ),
                                     ],
                                   ),

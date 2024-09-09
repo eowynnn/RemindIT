@@ -20,6 +20,7 @@ addReminder(BuildContext context, String uid) {
       reminderModel.time = timestamp;
       reminderModel.onOff = false;
       reminderModel.isPin = false;
+      reminderModel.isPriority = false;
       if (titleController.text.isNotEmpty) {
         reminderModel.title = titleController.text;
       } else {
