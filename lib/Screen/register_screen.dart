@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:remindits/Screen/login_screen.dart';
+import 'package:remindits/model/reminder_model.dart';
 import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/round_gradient_button.dart';
 import 'package:remindits/widgets/round_text_field.dart';
@@ -211,16 +212,55 @@ class _RegistPageState extends State<RegistPage> {
                               password: _passwordController.text,
                             );
                             String uid = userCredential.user!.uid;
-                            await _users.doc(uid).set({
-                              'email': _emailController.text,
-                              'firstName': _firstNameController.text,
-                              'lastName': _lastNameController.text,
-                            });
+                            await _users.doc(uid).set(
+                              {
+                                'email': _emailController.text,
+                                'firstName': _firstNameController.text,
+                                'lastName': _lastNameController.text,
+                              },
+                            );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text("Account created successfully"),
                               ),
                             );
+                            ReminderModel reminderModel1 = ReminderModel();
+                            DateTime now = DateTime.now();
+                            DateTime reminderTime1 =
+                                DateTime(now.year, now.month, now.day, 8, 0, 0);
+                            reminderModel1.time = Timestamp.fromDate(reminderTime1);
+                            reminderModel1.onOff = true;
+                            reminderModel1.isPin = false;
+                            reminderModel1.isPriority = true;
+                            reminderModel1.title = 'Time For Drink';
+                            reminderModel1.description =
+                                'Hello Its Time to Drink';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel1.toMap(),
+                                );
+                            ReminderModel reminderModel2 = ReminderModel();
+                            DateTime reminderTime2 =
+                                DateTime(now.year, now.month, now.day, 12, 0, 0);
+                            reminderModel2.time = Timestamp.fromDate(reminderTime2);
+                            reminderModel2.onOff = true;
+                            reminderModel2.isPin = false;
+                            reminderModel2.isPriority = true;
+                            reminderModel2.title = 'Time For Launch';
+                            reminderModel2.description =
+                                'Hello Its Time to Launch';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel1.toMap(),
+                                );
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
