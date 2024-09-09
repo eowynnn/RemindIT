@@ -154,18 +154,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                            color: AppColors.textGrayColor,
-                            fontFamily: "SFProText"),
-                      ),
-                    ),
-                  ),
                   SizedBox(
                     height: media.width * 0.08,
                   ),

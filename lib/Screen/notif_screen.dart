@@ -173,6 +173,7 @@ class _NotifPageState extends State<NotifPage> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontFamily: "SFProText",
+                                        overflow: TextOverflow.clip
                                       ),
                                     ),
                                     Text(
@@ -202,7 +203,7 @@ class _NotifPageState extends State<NotifPage> {
                                                 .showSnackBar(
                                               SnackBar(
                                                 content: Text(
-                                                    "Can't delete priority reminder"),
+                                                    "Can't delete Suggest reminder"),
                                               ),
                                             );
                                           } else {
@@ -217,9 +218,9 @@ class _NotifPageState extends State<NotifPage> {
                                             ? FaIcon(
                                                 FontAwesomeIcons.trash,
                                                 color: Colors.red,
-                                                size: 20,
+                                                size: 18,
                                               )
-                                            : FaIcon(FontAwesomeIcons.ban),
+                                            : FaIcon(FontAwesomeIcons.ban,size: 18,),
                                       ),
                                     ],
                                   ),
