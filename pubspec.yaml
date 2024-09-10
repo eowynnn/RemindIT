@@ -27,6 +27,7 @@ dependencies:
   http: ^1.2.2
   beautiful_soup_dart: ^0.3.0
   flutter_native_splash: ^2.4.1
+  animated_toggle_switch: ^0.8.3
 
 dev_dependencies:
   flutter_test:
