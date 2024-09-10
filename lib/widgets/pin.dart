@@ -10,11 +10,12 @@ class Pins extends StatefulWidget {
   Timestamp timestamp;
   String id;
   bool isPin;
+  bool isPriority;
   final String title;
   final String description;
 
   Pins(this.onOff, this.uid, this.id, this.timestamp, this.title,
-      this.description,
+      this.description, this.isPriority,
       {this.isPin = false});
 
   @override
@@ -36,6 +37,7 @@ class _PinsState extends State<Pins> {
         reminderModel.time = widget.timestamp;
         reminderModel.isPin = value;
         reminderModel.title = widget.title;
+        reminderModel.isPriority = widget.isPriority;
         reminderModel.description = widget.description;
         FirebaseFirestore.instance
             .collection('users')
