@@ -12,15 +12,21 @@ class NotificationLogic {
   static Future _notificationDetails() async {
     return NotificationDetails(
       android: AndroidNotificationDetails(
-          "Schedule Reminder", "Dont Forget to Drink Water",
-          importance: Importance.max, priority: Priority.high),
+        "Schedule Reminder",
+        "Dont Forget to Drink Water",
+        importance: Importance.max,
+        priority: Priority.high,
+        groupKey: "Reminder",
+      ),
     );
   }
 
   static Future init(BuildContext context, String uid) async {
     tz.initializeTimeZones();
     final android = AndroidInitializationSettings("hello");
-    final settings = InitializationSettings(android: android);
+    final settings = InitializationSettings(
+      android: android,
+    );
     await _notification.initialize(settings,
         onDidReceiveNotificationResponse: (payLoad) {
       Navigator.pushReplacement(
