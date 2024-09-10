@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:remindits/Screen/artickel_screen.dart';
+import 'package:remindits/model/package_model.dart';
+import 'package:remindits/services/http_service.dart';
+import 'package:remindits/services/scraper_service.dart';
 
-class ArtickelWidget extends StatelessWidget {
+class ArtickelWidget extends StatefulWidget {
   const ArtickelWidget({
     super.key,
   });
 
+  @override
+  State<ArtickelWidget> createState() => _ArtickelWidgetState();
+}
+
+class _ArtickelWidgetState extends State<ArtickelWidget> {
+  List<PackageModel> list = [];
+  Future<void> getPackage()async{
+    list.clear();
+    setState(() {});
+    final html =await HttpService.get();
+    if (html != null) list = ScraperService.run(html);
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;

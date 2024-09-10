@@ -293,12 +293,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ArtickelWidget(),
-                  SizedBox(height: 15),
-                  ArtickelWidget(),
-                  SizedBox(height: 15),
-                  ArtickelWidget(),
-                  SizedBox(height: 15),
-                  ArtickelWidget(),
                 ],
               ),
             ],

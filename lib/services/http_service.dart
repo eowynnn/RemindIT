@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-const String baseUrl = "";
+const String baseUrl = "https://www.detik.com/search/searchnews?query=tips+pola+hidup+sehat";
 class HttpService {
   static Future<String?> get()async{
     try {
