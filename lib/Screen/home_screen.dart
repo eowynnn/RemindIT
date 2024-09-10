@@ -292,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ArtickelWidget(),
+                  // ArtickelWidget(),
                 ],
               ),
             ],
