@@ -249,10 +249,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               Text(
                                                 title,
                                                 style: TextStyle(
-                                                  fontFamily: "SFProText",
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16
-                                                ),
+                                                    fontFamily: "SFProText",
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16),
                                               ),
                                             ],
                                           ),
@@ -292,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ArtickelWidget(),
+                  // ArtickelWidget(),
                 ],
               ),
             ],
