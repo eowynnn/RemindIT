@@ -32,12 +32,27 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
         .map((element) => element.innerHtml.trim())
         .toList();
 
-    print('Count: ${titles.length}');
+    final urls = html
+        .querySelectorAll('div.media__image > a')
+        .map(
+          (element) => 'https://www.detik.com/${element.attributes['href']}',
+        )
+        .toList();
+
+    final urlImages = html
+        .querySelectorAll('div.media__image > a > span > img')
+        .map((element) => element.attributes['src']!)
+        .toList();
+
+    print('Count: ${urls.length}');
     setState(
       () {
         articles = List.generate(
           titles.length,
-          (index) => Article(url: '', title: titles[index], urlImage: ''),
+          (index) => Article(
+              url: urls[index],
+              title: titles[index],
+              urlImage: urlImages[index]),
         );
       },
     );
@@ -45,7 +60,7 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    // var media = MediaQuery.of(context).size;
     return Scaffold(
       body: ListView.builder(
         padding: const EdgeInsets.all(12),
@@ -53,7 +68,15 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
         itemBuilder: (context, index) {
           final article = articles[index];
           return ListTile(
+            leading: Image.network(
+              article.urlImage,
+              width: 50,
+              fit: BoxFit.fitHeight,
+            ),
             title: Text(article.title),
+            subtitle: Text(
+              article.url,
+            ),
           );
         },
       ),
