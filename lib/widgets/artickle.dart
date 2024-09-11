@@ -3,6 +3,7 @@ import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:remindits/model/article_model.dart';
+import 'package:remindits/utils/app_colors.dart';
 
 class ArtickelWidget extends StatefulWidget {
   const ArtickelWidget({
@@ -82,13 +83,26 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
           return ListTile(
             leading: Image.network(
               article.urlImage,
-              width: 100,
-              fit: BoxFit.fitWidth,
+              width: 120,
+              height: 140,
+              fit: BoxFit.cover,
             ),
-            title: Text(article.title),
-            // subtitle: Text(
-            //   article.url,
-            // ),
+            title: Text(
+              article.title,
+              style: TextStyle(fontFamily: "SFProText"),
+            ),
+            subtitle: TextButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(AppColors.primaryColor1),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              ),
+              onPressed: () {},
+              child: Text(
+                'Learn more',
+                style: TextStyle(fontFamily: "SFProText"),
+              ),
+            ),
           );
         },
       ),
