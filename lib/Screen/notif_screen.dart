@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:remindits/services/notification_logic.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:remindits/utils/app_colors.dart';
@@ -68,7 +67,7 @@ class _NotifPageState extends State<NotifPage> {
           ),
           child: Center(
             child: Icon(
-              Ionicons.add,
+              FontAwesomeIcons.plus,
               color: Colors.white,
               size: 30,
             ),

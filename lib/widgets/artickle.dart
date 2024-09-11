@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:remindits/model/article_model.dart';

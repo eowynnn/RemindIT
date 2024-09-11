@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:remindits/Screen/login_screen.dart';
 import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/text_box_profile.dart';
@@ -117,7 +117,7 @@ class _ProfilPageState extends State<ProfilPage> {
                     height: 50,
                   ),
                   const Icon(
-                    Ionicons.person,
+                    FontAwesomeIcons.user,
                     size: 75,
                   ),
                   const SizedBox(
