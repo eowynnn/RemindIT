@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 1;
 
   final List<Widget> _pages = [
-    NotifPage(),
+    ArtickelWidget(),
     HomeScreen(),
     ProfilPage(),
   ];
@@ -66,17 +67,13 @@ class _HomePageState extends State<HomePage> {
             onTabChange: _onTabChanged,
             tabs: const [
               GButton(
-                icon: Ionicons.notifications,
-                text: 'Reminder',
+                icon: FontAwesomeIcons.newspaper,
               ),
               GButton(
-                icon: Ionicons.home,
-                text: 'Home',
-                iconSize: 24,
+                icon: FontAwesomeIcons.home,
               ),
               GButton(
-                icon: Ionicons.person,
-                text: 'Profile',
+                icon: FontAwesomeIcons.userAlt,
               ),
             ],
           ),

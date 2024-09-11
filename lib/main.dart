@@ -9,7 +9,7 @@ import 'package:remindits/widgets/artickle.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
 }
@@ -22,8 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "RemindIT",
       debugShowCheckedModeBanner: false,
-      home: ArtickelWidget()
-      // _auth.currentUser != null ? HomePage() : LoginPage(),
+      home: _auth.currentUser != null ? HomePage() : LoginPage(),
     );
   }
 }
