@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:remindits/Screen/home_screen.dart';
 import 'package:remindits/Screen/login_screen.dart';
 import 'package:remindits/firebase_options.dart';
-import 'package:remindits/widgets/artickle.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
