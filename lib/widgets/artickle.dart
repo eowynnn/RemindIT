@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remindits/Screen/artickel_screen.dart';
+// import 'package:remindits/Screen/artickel_screen.dart';
 import 'package:remindits/model/package_model.dart';
 import 'package:remindits/services/http_service.dart';
 import 'package:remindits/services/scraper_service.dart';
@@ -25,7 +25,7 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    // var media = MediaQuery.of(context).size;
     return Scaffold(
       body: ListView.builder(
         itemCount: list.length,

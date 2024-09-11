@@ -8,7 +8,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:remindits/Screen/notif_screen.dart';
 import 'package:remindits/Screen/profil_screen.dart';
 import 'package:remindits/utils/app_colors.dart';
-import 'package:remindits/widgets/artickle.dart';
+// import 'package:remindits/widgets/artickle.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
