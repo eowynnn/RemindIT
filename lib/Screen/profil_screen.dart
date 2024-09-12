@@ -161,36 +161,6 @@ class _ProfilPageState extends State<ProfilPage> {
                     padding: EdgeInsets.all(50),
                     child: Column(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.red),
-                            borderRadius: BorderRadius.circular(25),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black26,
-                                blurRadius: 2,
-                                offset: Offset(0, 2),
-                              )
-                            ],
-                          ),
-                          child: MaterialButton(
-                            onPressed: _deleteAcc,
-                            minWidth: double.maxFinite,
-                            height: 50,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            textColor: AppColors.textColor1,
-                            child: Text(
-                              "Delete Account",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                        ),
                         SizedBox(
                           height: 10,
                         ),

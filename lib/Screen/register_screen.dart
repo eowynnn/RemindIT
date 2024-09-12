@@ -228,7 +228,8 @@ class _RegistPageState extends State<RegistPage> {
                             DateTime now = DateTime.now();
                             DateTime reminderTime1 =
                                 DateTime(now.year, now.month, now.day, 8, 0, 0);
-                            reminderModel1.time = Timestamp.fromDate(reminderTime1);
+                            reminderModel1.time =
+                                Timestamp.fromDate(reminderTime1);
                             reminderModel1.onOff = true;
                             reminderModel1.isPin = false;
                             reminderModel1.isPriority = true;
@@ -244,9 +245,10 @@ class _RegistPageState extends State<RegistPage> {
                                   reminderModel1.toMap(),
                                 );
                             ReminderModel reminderModel2 = ReminderModel();
-                            DateTime reminderTime2 =
-                                DateTime(now.year, now.month, now.day, 12, 0, 0);
-                            reminderModel2.time = Timestamp.fromDate(reminderTime2);
+                            DateTime reminderTime2 = DateTime(
+                                now.year, now.month, now.day, 12, 0, 0);
+                            reminderModel2.time =
+                                Timestamp.fromDate(reminderTime2);
                             reminderModel2.onOff = true;
                             reminderModel2.isPin = false;
                             reminderModel2.isPriority = true;
@@ -259,7 +261,64 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('reminder')
                                 .doc()
                                 .set(
-                                  reminderModel1.toMap(),
+                                  reminderModel2.toMap(),
+                                );
+                            ReminderModel reminderModel3 = ReminderModel();
+                            DateTime reminderTime3 = DateTime(
+                                now.year, now.month, now.day, 10, 0, 0);
+                            reminderModel3.time =
+                                Timestamp.fromDate(reminderTime3);
+                            reminderModel3.onOff = true;
+                            reminderModel3.isPin = false;
+                            reminderModel3.isPriority = true;
+                            reminderModel3.title = 'Time For Drink';
+                            reminderModel3.description =
+                                'Hello Its Time to Drink';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel3.toMap(),
+                                );
+                            ReminderModel reminderModel4 = ReminderModel();
+                            DateTime reminderTime4 =
+                                DateTime(now.year, now.month, now.day, 8, 0, 0);
+                            reminderModel4.time =
+                                Timestamp.fromDate(reminderTime4);
+                            reminderModel4.onOff = true;
+                            reminderModel4.isPin = false;
+                            reminderModel4.isPriority = true;
+                            reminderModel4.title = 'Time For Breakfast';
+                            reminderModel4.description =
+                                'Hello Its Time to Breakfast';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel4.toMap(),
+                                );
+                            ReminderModel reminderModel5 = ReminderModel();
+                            DateTime reminderTime5 = DateTime(
+                                now.year, now.month, now.day, 18, 0, 0);
+                            reminderModel5.time =
+                                Timestamp.fromDate(reminderTime5);
+                            reminderModel5.onOff = true;
+                            reminderModel5.isPin = false;
+                            reminderModel5.isPriority = true;
+                            reminderModel5.title = 'Time For Dinner';
+                            reminderModel5.description =
+                                'Hello Its Time to Dinner';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel5.toMap(),
                                 );
                             Navigator.pushReplacement(
                               context,
