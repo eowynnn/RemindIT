@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:remindits/model/article_model.dart';
 import 'package:remindits/utils/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ArtickelWidget extends StatefulWidget {
   const ArtickelWidget({
@@ -35,7 +36,7 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
     final urls = html
         .querySelectorAll('div.media__image > a')
         .map(
-          (element) => 'https://www.detik.com/${element.attributes['href']}',
+          (element) => '${element.attributes['href']}',
         )
         .toList();
 
@@ -96,7 +97,13 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
                     MaterialStateProperty.all<Color>(AppColors.primaryColor1),
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               ),
-              onPressed: () {},
+              onPressed: () async {
+                try {
+                  await launchUrl(Uri.parse(article.url));
+                } catch (e) {
+                  print(article.url);
+                }
+              },
               child: Text(
                 'Learn more',
                 style: TextStyle(fontFamily: "SFProText"),
