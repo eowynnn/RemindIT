@@ -66,13 +66,13 @@ class _HomePageState extends State<HomePage> {
             onTabChange: _onTabChanged,
             tabs: const [
               GButton(
-                icon: FontAwesomeIcons.newspaper,
+                icon: FontAwesomeIcons.scroll,
               ),
               GButton(
-                icon: FontAwesomeIcons.home,
+                icon: FontAwesomeIcons.house,
               ),
               GButton(
-                icon: FontAwesomeIcons.userAlt,
+                icon: FontAwesomeIcons.userLarge,
               ),
             ],
           ),
@@ -226,14 +226,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        color: Color(0xffE6F7FF),
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
+                                      color: Color(0xffE6F7FF),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
                                     padding: EdgeInsets.symmetric(
-                                        vertical: 16, horizontal: 10),
+                                      vertical: 16,
+                                      horizontal: 10,
+                                    ),
                                     child: Row(
                                       children: [
-                                        Text('1'),
+                                        Text(
+                                          '1',
+                                        ),
                                         Container(
                                           width: media.width * 0.52,
                                           padding:
@@ -245,9 +249,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                               Text(
                                                 title,
                                                 style: TextStyle(
-                                                    fontFamily: "SFProText",
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16),
+                                                  fontFamily: "SFProText",
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -286,9 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 15),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // ArtickelWidget(),
-                ],
+                children: [],
               ),
             ],
           ),
