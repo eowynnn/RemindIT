@@ -91,22 +91,25 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
               article.title,
               style: TextStyle(fontFamily: "SFProText"),
             ),
-            subtitle: TextButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(AppColors.primaryColor1),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            subtitle: Container(
+              height: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: AppColors.primaryColor1,
               ),
-              onPressed: () async {
-                try {
-                  await launchUrl(Uri.parse(article.url));
-                } catch (e) {
-                  print(article.url);
-                }
-              },
-              child: Text(
-                'Learn more',
-                style: TextStyle(fontFamily: "SFProText"),
+              child: Center(
+                child: InkWell(
+                  onTap: () {
+                    launchUrl(Uri.parse(article.url));
+                  },
+                  child: Text(
+                    "Learn More",
+                    style: TextStyle(
+                      fontFamily: "SFProText",
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ),
             ),
           );
