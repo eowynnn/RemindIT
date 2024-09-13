@@ -6,15 +6,12 @@ import 'package:remindits/model/reminder_model.dart';
 import 'package:remindits/utils/app_colors.dart';
 
 addReminder(BuildContext context, String uid) {
-  
   TimeOfDay time = TimeOfDay.now();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
   add(String uid, TimeOfDay time) {
     try {
-      DateTime d = DateTime.now();
-      DateTime dateTime =
-          DateTime(d.year, d.month, d.day, time.hour, time.minute);
+      DateTime dateTime = DateTime(1970, 1, 1, time.hour, time.minute);
       Timestamp timestamp = Timestamp.fromDate(dateTime);
       ReminderModel reminderModel = ReminderModel();
       reminderModel.time = timestamp;
@@ -26,7 +23,7 @@ addReminder(BuildContext context, String uid) {
       } else {
         reminderModel.title = 'Reminder';
       }
-      if (descController.text.isNotEmpty){
+      if (descController.text.isNotEmpty) {
         reminderModel.description = descController.text;
       } else {
         reminderModel.description = 'Reminders';
@@ -84,7 +81,9 @@ addReminder(BuildContext context, String uid) {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     height: 100,
                     decoration: BoxDecoration(
@@ -108,7 +107,9 @@ addReminder(BuildContext context, String uid) {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   MaterialButton(
                     onPressed: () async {
                       TimeOfDay? newTime = await showTimePicker(

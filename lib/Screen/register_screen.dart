@@ -225,9 +225,8 @@ class _RegistPageState extends State<RegistPage> {
                               ),
                             );
                             ReminderModel reminderModel1 = ReminderModel();
-                            DateTime now = DateTime.now();
                             DateTime reminderTime1 =
-                                DateTime(now.year, now.month, now.day, 8, 0, 0);
+                                DateTime(1970, 1, 1, 8, 0, 0);
                             reminderModel1.time =
                                 Timestamp.fromDate(reminderTime1);
                             reminderModel1.onOff = true;
@@ -245,8 +244,8 @@ class _RegistPageState extends State<RegistPage> {
                                   reminderModel1.toMap(),
                                 );
                             ReminderModel reminderModel2 = ReminderModel();
-                            DateTime reminderTime2 = DateTime(
-                                now.year, now.month, now.day, 12, 0, 0);
+                            DateTime reminderTime2 =
+                                DateTime(1970, 1, 1, 12, 0, 0);
                             reminderModel2.time =
                                 Timestamp.fromDate(reminderTime2);
                             reminderModel2.onOff = true;
@@ -264,8 +263,8 @@ class _RegistPageState extends State<RegistPage> {
                                   reminderModel2.toMap(),
                                 );
                             ReminderModel reminderModel3 = ReminderModel();
-                            DateTime reminderTime3 = DateTime(
-                                now.year, now.month, now.day, 10, 0, 0);
+                            DateTime reminderTime3 =
+                                DateTime(1970, 1, 1, 10, 0, 0);
                             reminderModel3.time =
                                 Timestamp.fromDate(reminderTime3);
                             reminderModel3.onOff = true;
@@ -284,7 +283,7 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel4 = ReminderModel();
                             DateTime reminderTime4 =
-                                DateTime(now.year, now.month, now.day, 8, 0, 0);
+                                DateTime(1970, 1, 1, 7, 15, 0);
                             reminderModel4.time =
                                 Timestamp.fromDate(reminderTime4);
                             reminderModel4.onOff = true;
@@ -302,8 +301,8 @@ class _RegistPageState extends State<RegistPage> {
                                   reminderModel4.toMap(),
                                 );
                             ReminderModel reminderModel5 = ReminderModel();
-                            DateTime reminderTime5 = DateTime(
-                                now.year, now.month, now.day, 18, 0, 0);
+                            DateTime reminderTime5 =
+                                DateTime(1970, 1, 1, 18, 0, 0);
                             reminderModel5.time =
                                 Timestamp.fromDate(reminderTime5);
                             reminderModel5.onOff = true;
@@ -319,6 +318,44 @@ class _RegistPageState extends State<RegistPage> {
                                 .doc()
                                 .set(
                                   reminderModel5.toMap(),
+                                );
+                            ReminderModel reminderModel6 = ReminderModel();
+                            DateTime reminderTime6 =
+                                DateTime(1970, 1, 1, 14, 0, 0);
+                            reminderModel6.time =
+                                Timestamp.fromDate(reminderTime6);
+                            reminderModel6.onOff = true;
+                            reminderModel6.isPin = false;
+                            reminderModel6.isPriority = true;
+                            reminderModel6.title = 'Stretching';
+                            reminderModel6.description =
+                                'Dont Forget to Stretching';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel6.toMap(),
+                                );
+                            ReminderModel reminderModel7 = ReminderModel();
+                            DateTime reminderTime7 =
+                                DateTime(1970, 1, 1, 21, 0, 0);
+                            reminderModel7.time =
+                                Timestamp.fromDate(reminderTime7);
+                            reminderModel7.onOff = true;
+                            reminderModel7.isPin = false;
+                            reminderModel7.isPriority = true;
+                            reminderModel7.title = 'Sleep';
+                            reminderModel7.description =
+                                'Its time to go to sleep';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel7.toMap(),
                                 );
                             Navigator.pushReplacement(
                               context,

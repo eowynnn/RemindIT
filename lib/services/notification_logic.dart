@@ -52,7 +52,8 @@ class NotificationLogic {
       id,
       title,
       body,
-      tz.TZDateTime.from(dateTime, tz.local),
+      tz.TZDateTime.from(
+          DateTime(1970, 1, 1, dateTime.hour, dateTime.minute), tz.local),
       await _notificationDetails(),
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
