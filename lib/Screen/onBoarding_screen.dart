@@ -60,12 +60,16 @@ class _onBoardingState extends State<onBoarding> {
               },
               itemBuilder: (_, i) {
                 return Padding(
-                  padding: const EdgeInsets.all(80.0),
+                  padding: const EdgeInsets.only(top: 80, left: 25, right: 50),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        contents[i].image,
-                        height: 300,
+                      Center(
+                        child: Image.asset(
+                          contents[i].image,
+                          height: 300,
+                        ),
                       ),
                       Text(
                         contents[i].title,
@@ -75,7 +79,7 @@ class _onBoardingState extends State<onBoarding> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      // SizedBox(height: 20),
                       Text(
                         contents[i].descriptions,
                         style: TextStyle(

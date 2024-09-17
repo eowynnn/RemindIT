@@ -37,14 +37,12 @@ class _RegistPageState extends State<RegistPage> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            padding: EdgeInsets.symmetric(
+                vertical: media.height * 0.1, horizontal: 25),
             child: Form(
               key: _formkey,
               child: Column(

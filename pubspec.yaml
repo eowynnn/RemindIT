@@ -27,6 +27,7 @@ dependencies:
   html: ^0.15.4
   flutter_native_splash: ^2.4.1
   animated_toggle_switch: ^0.8.3
+  # url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:

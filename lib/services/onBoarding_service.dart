@@ -10,8 +10,8 @@ class UnboardingContent {
 List<UnboardingContent> contents = [
   UnboardingContent(
     image: "assets/png/5.png",
-    title: "RemindIT",
-    descriptions: "lorem ipsum dolor sit amet",
+    title: "Welcome To RemindIT",
+    descriptions: "Remind It Healthy Reminders at Your Fingertips",
   ),
   UnboardingContent(
     image: "assets/png/6.png",
