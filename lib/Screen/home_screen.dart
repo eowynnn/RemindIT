@@ -348,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SizedBox(height: 25),
                     Text(
-                      "Healthy lifestyle tips",
+                      "Reminders",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 18,

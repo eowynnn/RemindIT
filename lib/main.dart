@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:remindits/Screen/home_screen.dart';
 import 'package:remindits/Screen/login_screen.dart';
+import 'package:remindits/Screen/onBoarding_screen.dart';
 import 'package:remindits/firebase_options.dart';
 
 void main() async {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "RemindIT",
       debugShowCheckedModeBanner: false,
-      home: _auth.currentUser != null ? HomePage() : LoginPage(),
+      home: _auth.currentUser != null ? HomePage() : onBoarding(),
     );
   }
 }

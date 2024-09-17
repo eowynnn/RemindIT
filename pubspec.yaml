@@ -44,6 +44,9 @@ flutter:
       - assets\svg\Lock.svg
       - assets\svg\Profile.svg
       - assets\png\logo.png
+      - assets\png\5.png
+      - assets\png\6.png
+      - assets\png\7.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
