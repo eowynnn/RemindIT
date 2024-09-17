@@ -65,7 +65,7 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "News",
+          "Article",
           style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,

@@ -220,142 +220,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 9,
                     ),
-                    Center(
-                      child: Container(
-                        width: media.width * 0.9,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xffffffff),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
-                              spreadRadius: 5,
-                              blurRadius: 5,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
-                        ),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/svg/pushpin-fill.svg",
-                                  width: 20,
-                                ),
-                                SizedBox(width: 9),
-                                Text(
-                                  "Pinned Reminders",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "SFProText",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('users')
-                                  .doc(currentUser!.uid)
-                                  .collection('reminder')
-                                  .where('isPin', isEqualTo: true)
-                                  .snapshots(),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<QuerySnapshot> snapshots) {
-                                if (snapshots.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return CircularProgressIndicator();
-                                }
-                                if (snapshots.data!.docs.isEmpty) {
-                                  return Text("No Pinned Reminders");
-                                }
-                                final data = snapshots.data;
-                                return ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: data?.docs.length,
-                                  itemBuilder: (context, index) {
-                                    Timestamp t = data?.docs[index].get('time');
-                                    DateTime date =
-                                        DateTime.fromMicrosecondsSinceEpoch(
-                                            t.microsecondsSinceEpoch);
-                                    String formattedTime =
-                                        DateFormat.jm().format(date);
-                                    String title =
-                                        data!.docs[index].get('title');
-                                    return Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffE6F7FF),
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          padding: EdgeInsets.symmetric(
-                                            vertical: 16,
-                                            horizontal: 10,
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                '1',
-                                              ),
-                                              Container(
-                                                width: media.width * 0.52,
-                                                padding: const EdgeInsets.only(
-                                                    left: 20),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      title,
-                                                      style: TextStyle(
-                                                        fontFamily: "SFProText",
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 16,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Text(
-                                                formattedTime,
-                                                style: TextStyle(
-                                                  fontFamily: "SFProText",
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 25),
                     Text(
-                      "Reminders",
+                      "Your Reminders",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 18,
                         fontFamily: "SFProText",
                       ),
                     ),
-                    SizedBox(height: 15),
                   ],
                 ),
               ),
