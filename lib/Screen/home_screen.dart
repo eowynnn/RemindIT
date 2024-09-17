@@ -220,14 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 9,
                     ),
-                    Text(
-                      "Your Reminders",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        fontFamily: "SFProText",
-                      ),
-                    ),
+                    
                   ],
                 ),
               ),
@@ -253,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   if (snapshots.data!.docs.isEmpty) {
                     return Center(
-                      child: Text("Nothing to show"),
+                      child: Text("you don't have reminders"),
                     );
                   }
                   final data = snapshots.data;
@@ -379,36 +372,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                     ],
-                                  ),
-                                  SizedBox(
-                                    height: media.height * 0.02,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: AppColors.primaryColor2,
-                                    ),
-                                    width: media.width * 0.18,
-                                    padding: EdgeInsets.only(
-                                        left: 10, right: 10, top: 5, bottom: 5),
-                                    child: Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          "assets/svg/pushpin-fill.svg",
-                                          width: 20,
-                                          // ignore: deprecated_member_use
-                                          color: AppColors.primaryColor1,
-                                        ),
-                                        SizedBox(width: 9),
-                                        Text(
-                                          "On",
-                                          style: TextStyle(
-                                              fontFamily: "SFProText",
-                                              color: AppColors.textColor1,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
                                   ),
                                 ],
                               ),

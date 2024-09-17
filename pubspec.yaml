@@ -46,8 +46,6 @@ flutter:
       - assets\png\5.png
       - assets\png\6.png
       - assets\png\7.png
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
 
   fonts:
         - family: SFProText
