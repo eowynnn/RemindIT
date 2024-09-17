@@ -29,8 +29,26 @@ class _onBoardingState extends State<onBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          SafeArea(
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => LoginPage(),
+                  ),
+                );
+              },
+              child: Text(
+                "Skip",
+                style: TextStyle(color: AppColors.textColor1),
+              ),
+            ),
+          ),
           Expanded(
             child: PageView.builder(
               controller: _controller,
@@ -42,7 +60,7 @@ class _onBoardingState extends State<onBoarding> {
               },
               itemBuilder: (_, i) {
                 return Padding(
-                  padding: const EdgeInsets.all(40.0),
+                  padding: const EdgeInsets.all(80.0),
                   child: Column(
                     children: [
                       Image.asset(
@@ -87,7 +105,7 @@ class _onBoardingState extends State<onBoarding> {
             child: TextButton(
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (_) => LoginPage(),
@@ -96,7 +114,7 @@ class _onBoardingState extends State<onBoarding> {
                 }
                 _controller.nextPage(
                   duration: Duration(milliseconds: 200),
-                  curve: Curves.bounceIn,
+                  curve: Cubic(0.4, 0.0, 0.2, 1.0),
                 );
               },
               child: Text(
