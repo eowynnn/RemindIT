@@ -242,7 +242,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   if (snapshots.data!.docs.isEmpty) {
                     return Center(
-                      child: Text("you don't have reminders"),
+                      child: Container(
+                        child: Stack(
+                          alignment: AlignmentDirectional.center,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(
+                                top: media.height * 0.63,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Add reminder here',
+                                  ),
+                                  Image.asset(
+                                    'assets/png/black-arrow-png.png',
+                                    width: 100,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Text("you don't have reminders"),
+                          ],
+                        ),
+                      ),
                     );
                   }
                   final data = snapshots.data;

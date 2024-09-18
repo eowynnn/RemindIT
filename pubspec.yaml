@@ -47,6 +47,7 @@ flutter:
       - assets\png\5.png
       - assets\png\6.png
       - assets\png\7.png
+      - assets\png\black-arrow-png.png
 
   fonts:
         - family: SFProText
