@@ -28,6 +28,7 @@ class _onBoardingState extends State<onBoarding> {
 
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -59,36 +60,47 @@ class _onBoardingState extends State<onBoarding> {
                 });
               },
               itemBuilder: (_, i) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 80, left: 25, right: 50),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          contents[i].image,
-                          height: 300,
+                return Stack(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: media.height * 0.13),
+                      child: Center(
+                        child: Transform(
+                          transform: Matrix4.rotationZ(12),
+                          child: Image.asset(
+                            contents[i].image,
+                          ),
                         ),
                       ),
-                      Text(
-                        contents[i].title,
-                        style: TextStyle(
-                          fontFamily: "SFProText",
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: media.height * 0.41,
+                        left: 30,
+                        right: 40,
                       ),
-                      // SizedBox(height: 20),
-                      Text(
-                        contents[i].descriptions,
-                        style: TextStyle(
-                          fontFamily: "SFProText",
-                          color: Colors.grey,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            contents[i].title,
+                            style: TextStyle(
+                              fontFamily: "SFProText",
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            contents[i].descriptions,
+                            style: TextStyle(
+                              fontFamily: "SFProText",
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 );
               },
             ),
@@ -123,7 +135,7 @@ class _onBoardingState extends State<onBoarding> {
               },
               child: Text(
                 currentIndex == contents.length - 1 ? "Continue" : "Next",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               style: ButtonStyle(
                 shape: WidgetStateProperty.all<RoundedRectangleBorder>(

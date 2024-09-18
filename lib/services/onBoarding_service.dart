@@ -15,12 +15,8 @@ List<UnboardingContent> contents = [
   ),
   UnboardingContent(
     image: "assets/png/6.png",
-    title: "RemindIT",
-    descriptions: "lorem ipsum dolor sit amet",
-  ),
-  UnboardingContent(
-    image: "assets/png/7.png",
-    title: "RemindIT",
-    descriptions: "lorem ipsum dolor sit amet",
+    title: "Get Started",
+    descriptions:
+        "Create an account or sign in to start receiving smart reminders tailored to your needs.",
   ),
 ];
