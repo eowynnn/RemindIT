@@ -238,6 +238,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   }
+                  if (snapshots.hasError) {
+                    return Text('Error : ${snapshots.error}');
+                  }
                   if (snapshots.data!.docs.isEmpty) {
                     return Center(
                       child: Container(
