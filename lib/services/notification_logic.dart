@@ -21,6 +21,7 @@ class NotificationLogic {
     );
   }
 
+  
   static Future init(BuildContext context, String uid) async {
     tz.initializeTimeZones();
     final android = AndroidInitializationSettings("hello");

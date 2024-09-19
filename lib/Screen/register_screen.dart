@@ -355,6 +355,44 @@ class _RegistPageState extends State<RegistPage> {
                                 .set(
                                   reminderModel7.toMap(),
                                 );
+                            ReminderModel reminderModel8 = ReminderModel();
+                            DateTime reminderTime8 =
+                                DateTime(1970, 1, 1, 11, 0, 0);
+                            reminderModel8.time =
+                                Timestamp.fromDate(reminderTime8);
+                            reminderModel8.onOff = true;
+                            reminderModel8.isPin = false;
+                            reminderModel8.isPriority = true;
+                            reminderModel8.title = 'Drink';
+                            reminderModel8.description =
+                                'Dont forget to drink water';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel8.toMap(),
+                                );
+                            ReminderModel reminderModel9 = ReminderModel();
+                            DateTime reminderTime9 =
+                                DateTime(1970, 1, 1, 11, 30, 0);
+                            reminderModel9.time =
+                                Timestamp.fromDate(reminderTime9);
+                            reminderModel9.onOff = true;
+                            reminderModel9.isPin = false;
+                            reminderModel9.isPriority = true;
+                            reminderModel9.title = 'Streching';
+                            reminderModel9.description =
+                                'Dont forget to streching';
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .collection('reminder')
+                                .doc()
+                                .set(
+                                  reminderModel9.toMap(),
+                                );
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

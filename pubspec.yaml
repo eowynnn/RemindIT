@@ -29,6 +29,7 @@ dependencies:
   animated_toggle_switch: ^0.8.3
   url_launcher: ^6.3.0
   flutter_launcher_icons: ^0.13.1
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

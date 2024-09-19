@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:remindits/Screen/profil_screen.dart';
 import 'package:remindits/services/notification_logic.dart';
 import 'package:remindits/utils/app_colors.dart';
@@ -97,16 +99,23 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   User? user;
   bool on = true;
-
   void initState() {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
     NotificationLogic.init(context, user!.uid);
+  _requestNotificationPermission();
     listenNotification();
   }
 
   void listenNotification() {
     NotificationLogic.onNotification.listen((value) {});
+  }
+
+  Future<void> _requestNotificationPermission() async {
+    var status = await Permission.notification.status;
+    if (!status.isGranted) {
+      await Permission.notification.request();
+    }
   }
 
   void OnClickedNotification() {
