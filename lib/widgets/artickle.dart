@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:remindits/model/article_model.dart';
 import 'package:remindits/utils/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ArtickelWidget extends StatefulWidget {
   const ArtickelWidget({
@@ -99,9 +100,9 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
               child: Center(
                 child: InkWell(
                   onTap: () {
-                    // launchUrl(
-                    //   Uri.parse(article.url),
-                    // );
+                    launchUrl(
+                      Uri.parse(article.url),
+                    );
                   },
                   child: Text(
                     "Learn More",
