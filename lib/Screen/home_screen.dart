@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
@@ -228,6 +227,191 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            // Expanded(
+            //   child: StreamBuilder<QuerySnapshot>(
+            //     stream: FirebaseFirestore.instance
+            //         .collection("users")
+            //         .doc(user!.uid)
+            //         .collection('reminder')
+            //         .snapshots(),
+            //     builder: (BuildContext context,
+            //         AsyncSnapshot<QuerySnapshot> snapshots) {
+            //       if (snapshots.connectionState == ConnectionState.waiting) {
+            //         return Center(
+            //           child: CircularProgressIndicator(
+            //             valueColor: AlwaysStoppedAnimation<Color>(
+            //               Color(0xff4fa8c5),
+            //             ),
+            //           ),
+            //         );
+            //       }
+            //       if (snapshots.hasError) {
+            //         return Text('Error : ${snapshots.error}');
+            //       }
+            //       if (snapshots.data!.docs.isEmpty) {
+            //         return Center(
+            //           child: Container(
+            //             child: Stack(
+            //               alignment: AlignmentDirectional.center,
+            //               children: [
+            //                 Container(
+            //                   padding: EdgeInsets.only(
+            //                     top: media.height * 0.63,
+            //                   ),
+            //                   child: Row(
+            //                     mainAxisAlignment: MainAxisAlignment.center,
+            //                     children: [
+            //                       Text(
+            //                         'Add reminder here',
+            //                       ),
+            //                       Image.asset(
+            //                         'assets/png/black-arrow-png.png',
+            //                         width: 100,
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //                 Text("you don't have reminders"),
+            //               ],
+            //             ),
+            //           ),
+            //         );
+            //       }
+            //       final data = snapshots.data;
+            //       return ListView.builder(
+            //         itemCount: data?.docs.length,
+            //         itemBuilder: (context, index) {
+            //           Timestamp t = data?.docs[index].get('time');
+            //           DateTime date = DateTime.fromMicrosecondsSinceEpoch(
+            //               t.microsecondsSinceEpoch);
+            //           String formattedTime = DateFormat.jm().format(date);
+            //           String title = data!.docs[index].get('title');
+            //           String descriptions = data.docs[index].get('description');
+            //           bool prio = data.docs[index].get('isPriority');
+            //           on = data.docs[index].get('onOff');
+            //           if (on) {
+            //             NotificationLogic.showNotification(
+            //                 dateTime: date,
+            //                 id: 0,
+            //                 title: title,
+            //                 body: descriptions);
+            //           }
+            //           return Padding(
+            //             padding: const EdgeInsets.symmetric(
+            //                 horizontal: 30, vertical: 10),
+            //             child: Column(
+            //               children: [
+            //                 Container(
+            //                   decoration: BoxDecoration(
+            //                     color: Colors.white,
+            //                     borderRadius: BorderRadius.circular(20),
+            //                     boxShadow: [
+            //                       BoxShadow(
+            //                         color: Colors.grey.withOpacity(0.2),
+            //                         spreadRadius: 5,
+            //                         blurRadius: 10,
+            //                         offset: Offset(0, 0),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                   padding: EdgeInsets.only(
+            //                       left: 25, right: 15, top: 20, bottom: 25),
+            //                   child: Column(
+            //                     crossAxisAlignment: CrossAxisAlignment.start,
+            //                     children: [
+            //                       Row(
+            //                         mainAxisAlignment:
+            //                             MainAxisAlignment.spaceBetween,
+            //                         children: [
+            //                           Column(
+            //                             crossAxisAlignment:
+            //                                 CrossAxisAlignment.start,
+            //                             children: [
+            //                               Text(
+            //                                 title,
+            //                                 style: TextStyle(
+            //                                   fontSize: 18,
+            //                                   fontFamily: "SFProText",
+            //                                   fontWeight: FontWeight.bold,
+            //                                 ),
+            //                               ),
+            //                               SizedBox(
+            //                                 height: media.height * 0.001,
+            //                               ),
+            //                               Text(
+            //                                 descriptions,
+            //                                 style: TextStyle(
+            //                                     fontSize: 16,
+            //                                     fontFamily: "SFProText",
+            //                                     overflow: TextOverflow.clip),
+            //                               ),
+            //                               Text(
+            //                                 formattedTime,
+            //                                 style: TextStyle(
+            //                                     fontFamily: "SFProText",
+            //                                     fontSize: 14),
+            //                               ),
+            //                             ],
+            //                           ),
+            //                           Container(
+            //                             child: Row(
+            //                               children: [
+            //                                 Switcher(
+            //                                   on,
+            //                                   user!.uid,
+            //                                   data.docs[index].id,
+            //                                   data.docs[index].get('time'),
+            //                                   data.docs[index].get('title'),
+            //                                   data.docs[index]
+            //                                       .get('description'),
+            //                                   data.docs[index]
+            //                                       .get('isPriority'),
+            //                                 ),
+            //                                 IconButton(
+            //                                   onPressed: () {
+            //                                     if (prio == true) {
+            //                                       ScaffoldMessenger.of(context)
+            //                                           .showSnackBar(
+            //                                         SnackBar(
+            //                                           content: Text(
+            //                                               "Can't delete Suggest reminder"),
+            //                                         ),
+            //                                       );
+            //                                     } else {
+            //                                       deleteReminder(
+            //                                         context,
+            //                                         data.docs[index].id,
+            //                                         user!.uid,
+            //                                       );
+            //                                     }
+            //                                   },
+            //                                   icon: prio == false
+            //                                       ? FaIcon(
+            //                                           FontAwesomeIcons.trash,
+            //                                           color: Colors.red,
+            //                                           size: 18,
+            //                                         )
+            //                                       : FaIcon(
+            //                                           FontAwesomeIcons.ban,
+            //                                           size: 18,
+            //                                         ),
+            //                                 ),
+            //                               ],
+            //                             ),
+            //                           ),
+            //                         ],
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           );
+            //         },
+            //       );
+            //     },
+            //   ),
+            // ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
@@ -284,15 +468,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       Timestamp t = data?.docs[index].get('time');
                       DateTime date = DateTime.fromMicrosecondsSinceEpoch(
-                          t.microsecondsSinceEpoch);
+                        t.microsecondsSinceEpoch,
+                      );
                       String formattedTime = DateFormat.jm().format(date);
                       String title = data!.docs[index].get('title');
                       String descriptions = data.docs[index].get('description');
-                      bool prio = data.docs[index].get('isPriority');
-                      if (prio) {
-                        return SizedBox
-                            .shrink(); // Menyembunyikan item dengan isPriority true
-                      }
                       on = data.docs[index].get('onOff');
                       if (on) {
                         NotificationLogic.showNotification(
@@ -332,23 +512,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            title,
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: "SFProText",
-                                              fontWeight: FontWeight.bold,
+                                          Container(
+                                            width: media.width * 0.43,
+                                            child: Text(
+                                              title,
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontFamily: "SFProText",
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ),
                                           SizedBox(
                                             height: media.height * 0.001,
                                           ),
-                                          Text(
-                                            descriptions,
-                                            style: TextStyle(
+                                          Container(
+                                            width: media.width * 0.43,
+                                            child: Text(
+                                              descriptions,
+                                              style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily: "SFProText",
-                                                overflow: TextOverflow.clip),
+                                                overflow: TextOverflow.clip,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: media.height * 0.01,
                                           ),
                                           Text(
                                             formattedTime,
@@ -374,32 +564,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             IconButton(
                                               onPressed: () {
-                                                if (prio == true) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                          "Can't delete Suggest reminder"),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  deleteReminder(
-                                                    context,
-                                                    data.docs[index].id,
-                                                    user!.uid,
-                                                  );
-                                                }
+                                                deleteReminder(
+                                                  context,
+                                                  data.docs[index].id,
+                                                  user!.uid,
+                                                );
                                               },
-                                              icon: prio == false
-                                                  ? FaIcon(
-                                                      FontAwesomeIcons.trash,
-                                                      color: Colors.red,
-                                                      size: 18,
-                                                    )
-                                                  : FaIcon(
-                                                      FontAwesomeIcons.ban,
-                                                      size: 18,
-                                                    ),
+                                              icon: FaIcon(
+                                                FontAwesomeIcons.trash,
+                                                color: Colors.red,
+                                                size: 18,
+                                              ),
                                             ),
                                           ],
                                         ),

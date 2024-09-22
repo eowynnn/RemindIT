@@ -9,6 +9,7 @@ addReminder(BuildContext context, String uid) {
   TimeOfDay time = TimeOfDay.now();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
+  int reminderIndex = 0;
   add(String uid, TimeOfDay time) {
     try {
       DateTime dateTime = DateTime(1970, 1, 1, time.hour, time.minute);
@@ -32,8 +33,25 @@ addReminder(BuildContext context, String uid) {
           .collection('users')
           .doc(uid)
           .collection('reminder')
-          .doc()
-          .set(reminderModel.toMap());
+          .get()
+          .then((querySnapshot) {
+        int reminderIndex =
+            querySnapshot.docs.length; // dapatkan jumlah dokumen
+        String reminderIndexString;
+        if (reminderIndex < 10) {
+          reminderIndexString = 'reminder_$reminderIndex';
+        } else {
+          String alphabet = String.fromCharCode(
+              64 + (reminderIndex - 9)); // konversi ke karakter alfabet
+          reminderIndexString = 'reminder_$alphabet';
+        }
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(uid)
+            .collection('reminder')
+            .doc(reminderIndexString) // gunakan nilai index
+            .set(reminderModel.toMap());
+      });
       Fluttertoast.showToast(msg: 'Reminder Added');
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());

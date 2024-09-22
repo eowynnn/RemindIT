@@ -237,13 +237,13 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("1")
                                 .set(
                                   reminderModel1.toMap(),
                                 );
                             ReminderModel reminderModel2 = ReminderModel();
                             DateTime reminderTime2 =
-                                DateTime(1970, 1, 1, 12, 0, 0);
+                                DateTime(1970, 1, 1, 7, 0, 0);
                             reminderModel2.time =
                                 Timestamp.fromDate(reminderTime2);
                             reminderModel2.onOff = true;
@@ -256,7 +256,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("2")
                                 .set(reminderModel2.toMap());
                             ReminderModel reminderModel3 = ReminderModel();
                             DateTime reminderTime3 =
@@ -273,7 +273,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("3")
                                 .set(
                                   reminderModel3.toMap(),
                                 );
@@ -292,7 +292,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("4")
                                 .set(
                                   reminderModel4.toMap(),
                                 );
@@ -304,14 +304,15 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel5.onOff = true;
                             reminderModel5.isPin = false;
                             reminderModel5.isPriority = true;
-                            reminderModel5.title = 'Afternoon Physical Activity';
+                            reminderModel5.title =
+                                'Afternoon Physical Activity';
                             reminderModel5.description =
                                 'Do sports or exercise to relieve stress';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("5")
                                 .set(
                                   reminderModel5.toMap(),
                                 );
@@ -330,7 +331,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("6")
                                 .set(
                                   reminderModel6.toMap(),
                                 );
@@ -349,7 +350,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("7")
                                 .set(
                                   reminderModel7.toMap(),
                                 );
@@ -368,7 +369,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("8")
                                 .set(
                                   reminderModel8.toMap(),
                                 );
@@ -387,7 +388,7 @@ class _RegistPageState extends State<RegistPage> {
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
-                                .doc()
+                                .doc("9")
                                 .set(
                                   reminderModel9.toMap(),
                                 );
