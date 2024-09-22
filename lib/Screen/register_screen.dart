@@ -224,16 +224,16 @@ class _RegistPageState extends State<RegistPage> {
                             );
                             ReminderModel reminderModel1 = ReminderModel();
                             DateTime reminderTime1 =
-                                DateTime(1970, 1, 1, 8, 0, 0);
+                                DateTime(1970, 1, 1, 6, 0, 0);
                             reminderModel1.time =
                                 Timestamp.fromDate(reminderTime1);
                             reminderModel1.onOff = true;
                             reminderModel1.isPin = false;
                             reminderModel1.isPriority = true;
-                            reminderModel1.title = 'Time For Drink';
+                            reminderModel1.title = 'Strart The Day';
                             reminderModel1.description =
-                                'Hello Its Time to Drink';
-                            await FirebaseFirestore.instance
+                                'Start the day by doing some light stretching.';
+                            FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
@@ -249,20 +249,18 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel2.onOff = true;
                             reminderModel2.isPin = false;
                             reminderModel2.isPriority = true;
-                            reminderModel2.title = 'Time For Launch';
+                            reminderModel2.title = 'Healthy Breakfast';
                             reminderModel2.description =
-                                'Hello Its Time to Launch';
-                            await FirebaseFirestore.instance
+                                'Enjoy a nutrient-rich breakfast';
+                            FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
                                 .doc()
-                                .set(
-                                  reminderModel2.toMap(),
-                                );
+                                .set(reminderModel2.toMap());
                             ReminderModel reminderModel3 = ReminderModel();
                             DateTime reminderTime3 =
-                                DateTime(1970, 1, 1, 10, 0, 0);
+                                DateTime(1970, 1, 1, 9, 0, 0);
                             reminderModel3.time =
                                 Timestamp.fromDate(reminderTime3);
                             reminderModel3.onOff = true;
@@ -270,8 +268,8 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel3.isPriority = true;
                             reminderModel3.title = 'Time For Drink';
                             reminderModel3.description =
-                                'Hello Its Time to Drink';
-                            await FirebaseFirestore.instance
+                                'Hello Its Time to Drink some water';
+                            FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
                                 .collection('reminder')
@@ -281,15 +279,15 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel4 = ReminderModel();
                             DateTime reminderTime4 =
-                                DateTime(1970, 1, 1, 7, 15, 0);
+                                DateTime(1970, 1, 1, 12, 00, 0);
                             reminderModel4.time =
                                 Timestamp.fromDate(reminderTime4);
                             reminderModel4.onOff = true;
                             reminderModel4.isPin = false;
                             reminderModel4.isPriority = true;
-                            reminderModel4.title = 'Time For Breakfast';
+                            reminderModel4.title = 'Time For Lunch';
                             reminderModel4.description =
-                                'Hello Its Time to Breakfast';
+                                'Serve a balanced lunch with protein.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -300,15 +298,15 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel5 = ReminderModel();
                             DateTime reminderTime5 =
-                                DateTime(1970, 1, 1, 18, 0, 0);
+                                DateTime(1970, 1, 1, 17, 0, 0);
                             reminderModel5.time =
                                 Timestamp.fromDate(reminderTime5);
                             reminderModel5.onOff = true;
                             reminderModel5.isPin = false;
                             reminderModel5.isPriority = true;
-                            reminderModel5.title = 'Time For Dinner';
+                            reminderModel5.title = 'Afternoon Physical Activity';
                             reminderModel5.description =
-                                'Hello Its Time to Dinner';
+                                'Do sports or exercise to relieve stress';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -319,15 +317,15 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel6 = ReminderModel();
                             DateTime reminderTime6 =
-                                DateTime(1970, 1, 1, 14, 0, 0);
+                                DateTime(1970, 1, 1, 19, 0, 0);
                             reminderModel6.time =
                                 Timestamp.fromDate(reminderTime6);
                             reminderModel6.onOff = true;
                             reminderModel6.isPin = false;
                             reminderModel6.isPriority = true;
-                            reminderModel6.title = 'Stretching';
+                            reminderModel6.title = 'Healthy Dinner';
                             reminderModel6.description =
-                                'Dont Forget to Stretching';
+                                'Choose healthy and nutritious dinners to support your body recovery and maintain health.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -338,15 +336,15 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel7 = ReminderModel();
                             DateTime reminderTime7 =
-                                DateTime(1970, 1, 1, 21, 0, 0);
+                                DateTime(1970, 1, 1, 20, 0, 0);
                             reminderModel7.time =
                                 Timestamp.fromDate(reminderTime7);
                             reminderModel7.onOff = true;
                             reminderModel7.isPin = false;
                             reminderModel7.isPriority = true;
-                            reminderModel7.title = 'Sleep';
+                            reminderModel7.title = 'Leisure Time';
                             reminderModel7.description =
-                                'Its time to go to sleep';
+                                'Take time for relaxing activities such as reading a book, meditation, or a hobby to calm your mind after a day of activities.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -357,15 +355,15 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel8 = ReminderModel();
                             DateTime reminderTime8 =
-                                DateTime(1970, 1, 1, 11, 0, 0);
+                                DateTime(1970, 1, 1, 21, 0, 0);
                             reminderModel8.time =
                                 Timestamp.fromDate(reminderTime8);
                             reminderModel8.onOff = true;
                             reminderModel8.isPin = false;
                             reminderModel8.isPriority = true;
-                            reminderModel8.title = 'Drink';
+                            reminderModel8.title = 'Sleep Time';
                             reminderModel8.description =
-                                'Dont forget to drink water';
+                                'Go to bed on time to give your body a chance to rest.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -376,15 +374,15 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel9 = ReminderModel();
                             DateTime reminderTime9 =
-                                DateTime(1970, 1, 1, 18, 00, 0);
+                                DateTime(1970, 1, 1, 5, 0, 0);
                             reminderModel9.time =
                                 Timestamp.fromDate(reminderTime9);
                             reminderModel9.onOff = true;
                             reminderModel9.isPin = false;
                             reminderModel9.isPriority = true;
-                            reminderModel9.title = 'Streching';
+                            reminderModel9.title = 'Wake Up Time';
                             reminderModel9.description =
-                                'Dont forget to streching';
+                                'Wake up on time to get your energy back and help you recover from the day’s activities.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
