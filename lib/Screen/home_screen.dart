@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
     NotificationLogic.init(context, user!.uid);
-  _requestNotificationPermission();
+    _requestNotificationPermission();
     listenNotification();
   }
 
@@ -289,6 +289,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       String title = data!.docs[index].get('title');
                       String descriptions = data.docs[index].get('description');
                       bool prio = data.docs[index].get('isPriority');
+                      if (prio) {
+                        return SizedBox
+                            .shrink(); // Menyembunyikan item dengan isPriority true
+                      }
                       on = data.docs[index].get('onOff');
                       if (on) {
                         NotificationLogic.showNotification(
@@ -413,8 +417,200 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
+            // Expanded(
+            //   child: StreamBuilder<QuerySnapshot>(
+            //     stream: FirebaseFirestore.instance
+            //         .collection("users")
+            //         .doc(user!.uid)
+            //         .collection('reminder')
+            //         .snapshots(),
+            //     builder: (BuildContext context,
+            //         AsyncSnapshot<QuerySnapshot> snapshots) {
+            //       if (snapshots.connectionState == ConnectionState.waiting) {
+            //         return Center(
+            //           child: CircularProgressIndicator(
+            //             valueColor:
+            //                 AlwaysStoppedAnimation<Color>(Color(0xff4fa8c5)),
+            //           ),
+            //         );
+            //       }
+            //       if (snapshots.hasError) {
+            //         return Text('Error: ${snapshots.error}');
+            //       }
+
+            //       // Jika tidak ada data sama sekali
+            //       if (snapshots.data!.docs.isEmpty) {
+            //         return Center(
+            //           child: Text("Tambah reminder disini"),
+            //         );
+            //       }
+
+            //       // Pisahkan data menjadi dua list berdasarkan isPriority
+            //       final priorityReminders = snapshots.data!.docs
+            //           .where((doc) => doc.get('isPriority') == true)
+            //           .toList();
+            //       final nonPriorityReminders = snapshots.data!.docs
+            //           .where((doc) => doc.get('isPriority') == false)
+            //           .toList();
+
+            //       // Jika tidak ada reminder non-priority, tampilkan pesan
+            //       if (nonPriorityReminders.isEmpty) {
+            //         return ListView(
+            //           children: [
+            //             Padding(
+            //               padding: const EdgeInsets.all(20.0),
+            //               child: Center(child: Text("Tambah reminder disini")),
+            //             ),
+            //             // Tampilkan reminder yang hanya isPriority = true
+            //             ...priorityReminders.map((reminder) {
+            //               return buildReminderItem(reminder,
+            //                   context); // Fungsi untuk membangun tampilan reminder
+            //             }).toList(),
+            //           ],
+            //         );
+            //       }
+
+            //       // Gabungkan kedua list, dengan prioritas di atas
+            //       final allReminders = [
+            //         ...priorityReminders,
+            //         ...nonPriorityReminders,
+            //       ];
+
+            //       return ListView.builder(
+            //         itemCount: allReminders.length, // Gabungan kedua list
+            //         itemBuilder: (context, index) {
+            //           if (index >= allReminders.length) {
+            //             return SizedBox.shrink();
+            //           }
+
+            //           DocumentSnapshot reminder = allReminders[index];
+            //           return buildReminderItem(reminder, context);
+            //         },
+            //       );
+            //     },
+            //   ),
+            // )
           ],
         ),
+      ),
+    );
+  }
+
+// Fungsi terpisah untuk membangun setiap item reminder
+  Widget buildReminderItem(DocumentSnapshot reminder, BuildContext context) {
+    Timestamp t = reminder.get('time');
+    DateTime date =
+        DateTime.fromMicrosecondsSinceEpoch(t.microsecondsSinceEpoch);
+    String formattedTime = DateFormat.jm().format(date);
+    String title = reminder.get('title');
+    String descriptions = reminder.get('description');
+    bool on = reminder.get('onOff');
+    bool prio = reminder.get('isPriority');
+
+    if (on) {
+      NotificationLogic.showNotification(
+        dateTime: date,
+        id: 0,
+        title: title,
+        body: descriptions,
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 5,
+                  blurRadius: 10,
+                  offset: Offset(0, 0),
+                ),
+              ],
+            ),
+            padding: EdgeInsets.only(left: 25, right: 15, top: 20, bottom: 25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "SFProText",
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          descriptions,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: "SFProText",
+                            overflow: TextOverflow.clip,
+                          ),
+                        ),
+                        Text(
+                          formattedTime,
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Switcher(
+                            on,
+                            user!.uid,
+                            reminder.id,
+                            reminder.get('time'),
+                            reminder.get('title'),
+                            reminder.get('description'),
+                            reminder.get('isPriority'),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              if (prio == true) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content:
+                                        Text("Can't delete Suggest reminder"),
+                                  ),
+                                );
+                              } else {
+                                deleteReminder(context, reminder.id, user!.uid);
+                              }
+                            },
+                            icon: FaIcon(
+                              prio == false
+                                  ? FontAwesomeIcons.trash
+                                  : FontAwesomeIcons.ban,
+                              color: prio == false ? Colors.red : Colors.grey,
+                              size: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

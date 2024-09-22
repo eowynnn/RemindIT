@@ -376,7 +376,7 @@ class _RegistPageState extends State<RegistPage> {
                                 );
                             ReminderModel reminderModel9 = ReminderModel();
                             DateTime reminderTime9 =
-                                DateTime(1970, 1, 1, 11, 30, 0);
+                                DateTime(1970, 1, 1, 18, 00, 0);
                             reminderModel9.time =
                                 Timestamp.fromDate(reminderTime9);
                             reminderModel9.onOff = true;

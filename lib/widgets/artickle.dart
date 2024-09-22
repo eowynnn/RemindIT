@@ -24,7 +24,7 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
 
   Future getWebsiteData() async {
     final url = Uri.parse(
-        'https://www.detik.com/search/searchnews?query=tips+kesehatan');
+        'https://www.detik.com/search/searchnews?query=tips+untuke+menjaga+kesehatan');
     final response = await http.get(url);
     dom.Document html = dom.Document.html(response.body);
 
