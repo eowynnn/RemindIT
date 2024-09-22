@@ -234,7 +234,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     .collection("users")
                     .doc(user!.uid)
                     .collection('reminder')
-                    .where('isPriority', isEqualTo: false)
                     .snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshots) {
