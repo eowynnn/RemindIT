@@ -192,7 +192,6 @@ class _NotifPageState extends State<NotifPage> {
                                         data.docs[index].get('time'),
                                         data.docs[index].get('title'),
                                         data.docs[index].get('description'),
-                                        data.docs[index].get('isPriority'),
                                       ),
                                       IconButton(
                                         onPressed: () {

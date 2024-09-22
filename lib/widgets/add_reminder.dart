@@ -9,7 +9,6 @@ addReminder(BuildContext context, String uid) {
   TimeOfDay time = TimeOfDay.now();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
-  int reminderIndex = 0;
   add(String uid, TimeOfDay time) {
     try {
       DateTime dateTime = DateTime(1970, 1, 1, time.hour, time.minute);
@@ -17,8 +16,6 @@ addReminder(BuildContext context, String uid) {
       ReminderModel reminderModel = ReminderModel();
       reminderModel.time = timestamp;
       reminderModel.onOff = false;
-      reminderModel.isPin = false;
-      reminderModel.isPriority = false;
       if (titleController.text.isNotEmpty) {
         reminderModel.title = titleController.text;
       } else {

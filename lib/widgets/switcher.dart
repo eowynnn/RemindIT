@@ -10,15 +10,12 @@ class Switcher extends StatefulWidget {
   String uid;
   Timestamp timestamp;
   String id;
-  bool isPin;
   final String title;
   final String description;
-  final bool isPriority;
 
   Switcher(this.onOff, this.uid, this.id, this.timestamp, this.title,
       this.description,
-      this.isPriority,
-      {this.isPin = false});
+      );
 
   @override
   State<Switcher> createState() => _SwitcherState();
@@ -33,10 +30,8 @@ class _SwitcherState extends State<Switcher> {
         ReminderModel reminderModel = ReminderModel();
         reminderModel.onOff = value;
         reminderModel.time = widget.timestamp;
-        reminderModel.isPin = value ? widget.isPin : false;
         reminderModel.title = widget.title;
         reminderModel.description = widget.description;
-        reminderModel.isPriority = widget.isPriority;
         FirebaseFirestore.instance
             .collection('users')
             .doc(widget.uid)

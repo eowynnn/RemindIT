@@ -559,8 +559,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                               data.docs[index].get('title'),
                                               data.docs[index]
                                                   .get('description'),
-                                              data.docs[index]
-                                                  .get('isPriority'),
                                             ),
                                             IconButton(
                                               onPressed: () {
@@ -754,7 +752,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             reminder.get('time'),
                             reminder.get('title'),
                             reminder.get('description'),
-                            reminder.get('isPriority'),
                           ),
                           IconButton(
                             onPressed: () {

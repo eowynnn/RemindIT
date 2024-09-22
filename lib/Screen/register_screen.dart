@@ -228,8 +228,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel1.time =
                                 Timestamp.fromDate(reminderTime1);
                             reminderModel1.onOff = true;
-                            reminderModel1.isPin = false;
-                            reminderModel1.isPriority = true;
                             reminderModel1.title = 'Strart The Day';
                             reminderModel1.description =
                                 'Start the day by doing some light stretching.';
@@ -247,8 +245,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel2.time =
                                 Timestamp.fromDate(reminderTime2);
                             reminderModel2.onOff = true;
-                            reminderModel2.isPin = false;
-                            reminderModel2.isPriority = true;
                             reminderModel2.title = 'Healthy Breakfast';
                             reminderModel2.description =
                                 'Enjoy a nutrient-rich breakfast';
@@ -264,8 +260,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel3.time =
                                 Timestamp.fromDate(reminderTime3);
                             reminderModel3.onOff = true;
-                            reminderModel3.isPin = false;
-                            reminderModel3.isPriority = true;
                             reminderModel3.title = 'Time For Drink';
                             reminderModel3.description =
                                 'Hello Its Time to Drink some water';
@@ -283,8 +277,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel4.time =
                                 Timestamp.fromDate(reminderTime4);
                             reminderModel4.onOff = true;
-                            reminderModel4.isPin = false;
-                            reminderModel4.isPriority = true;
                             reminderModel4.title = 'Time For Lunch';
                             reminderModel4.description =
                                 'Serve a balanced lunch with protein.';
@@ -302,8 +294,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel5.time =
                                 Timestamp.fromDate(reminderTime5);
                             reminderModel5.onOff = true;
-                            reminderModel5.isPin = false;
-                            reminderModel5.isPriority = true;
                             reminderModel5.title =
                                 'Afternoon Physical Activity';
                             reminderModel5.description =
@@ -322,8 +312,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel6.time =
                                 Timestamp.fromDate(reminderTime6);
                             reminderModel6.onOff = true;
-                            reminderModel6.isPin = false;
-                            reminderModel6.isPriority = true;
                             reminderModel6.title = 'Healthy Dinner';
                             reminderModel6.description =
                                 'Choose healthy and nutritious dinners to support your body recovery and maintain health.';
@@ -341,8 +329,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel7.time =
                                 Timestamp.fromDate(reminderTime7);
                             reminderModel7.onOff = true;
-                            reminderModel7.isPin = false;
-                            reminderModel7.isPriority = true;
                             reminderModel7.title = 'Leisure Time';
                             reminderModel7.description =
                                 'Take time for relaxing activities such as reading a book, meditation, or a hobby to calm your mind after a day of activities.';
@@ -360,8 +346,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel8.time =
                                 Timestamp.fromDate(reminderTime8);
                             reminderModel8.onOff = true;
-                            reminderModel8.isPin = false;
-                            reminderModel8.isPriority = true;
                             reminderModel8.title = 'Sleep Time';
                             reminderModel8.description =
                                 'Go to bed on time to give your body a chance to rest.';
@@ -379,8 +363,6 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel9.time =
                                 Timestamp.fromDate(reminderTime9);
                             reminderModel9.onOff = true;
-                            reminderModel9.isPin = false;
-                            reminderModel9.isPriority = true;
                             reminderModel9.title = 'Wake Up Time';
                             reminderModel9.description =
                                 'Wake up on time to get your energy back and help you recover from the day’s activities.';
