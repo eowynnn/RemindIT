@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Login Failed"),
+          content: Text("Gagal Masuk"),
         ),
       );
       return null;
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: media.width * 0.2,
                         ),
                         Text(
-                          "Welcome Back",
+                          "Selamat Datang kembali",
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             height: .8,
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: media.width * 0.04,
                         ),
                         Text(
-                          "Start your journey towards a healthy and productive life. Sign in to continue.",
+                          "Mulailah perjalanan Anda menuju kehidupan yang sehat dan produktif. Masuk untuk melanjutkan.",
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: AppColors.textColor1,
@@ -190,11 +190,11 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         children: [
                           TextSpan(
-                            text: "Don't have an account? ",
+                            text: "Tidak punya akun? ",
                             style: TextStyle(color: AppColors.textGrayColor),
                           ),
                           TextSpan(
-                            text: "Sign Up",
+                            text: "Register",
                             style: TextStyle(color: AppColors.primaryColor1),
                           ),
                         ],

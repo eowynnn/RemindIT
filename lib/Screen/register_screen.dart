@@ -61,7 +61,7 @@ class _RegistPageState extends State<RegistPage> {
                           height: media.width * 0.1,
                         ),
                         Text(
-                          "Create account",
+                          "Buat akun",
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             height: .8,
@@ -75,7 +75,7 @@ class _RegistPageState extends State<RegistPage> {
                           height: media.width * 0.04,
                         ),
                         Text(
-                          "Sign up to get started!",
+                          "Daftar untuk memulai!",
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: AppColors.textColor1,
@@ -426,11 +426,11 @@ class _RegistPageState extends State<RegistPage> {
                         ),
                         children: [
                           TextSpan(
-                            text: "Already have an account? ",
+                            text: "Sudah memiliki akun? ",
                             style: TextStyle(color: AppColors.textGrayColor),
                           ),
                           TextSpan(
-                            text: "Sign In",
+                            text: "Login",
                             style: TextStyle(color: AppColors.primaryColor1),
                           ),
                         ],

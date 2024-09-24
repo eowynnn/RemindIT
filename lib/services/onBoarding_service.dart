@@ -10,13 +10,13 @@ class UnboardingContent {
 List<UnboardingContent> contents = [
   UnboardingContent(
     image: "assets/png/5.png",
-    title: "Welcome To RemindIT",
-    descriptions: "Remind It Healthy Reminders at Your Fingertips",
+    title: "Selamat Datang di RemindIT",
+    descriptions: "RemindIT Pengingat Sehat di Ujung Jari Anda",
   ),
   UnboardingContent(
     image: "assets/png/6.png",
-    title: "Get Started",
+    title: "Memulai",
     descriptions:
-        "Create an account or sign in to start receiving smart reminders tailored to your needs.",
+        "Buat akun atau masuk untuk mulai menerima pengingat cerdas yang disesuaikan dengan kebutuhan Anda.",
   ),
 ];
