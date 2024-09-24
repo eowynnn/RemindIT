@@ -193,28 +193,33 @@ class _HomeScreenState extends State<HomeScreen> {
                             if (snapshot.hasData) {
                               final userData =
                                   snapshot.data!.data() as Map<String, dynamic>;
-                              return Row(
-                                children: [
-                                  Text(
-                                    userData["firstName"],
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "SFProText",
+                              return Container(
+                                width: media.width,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      userData["firstName"],
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "SFProText",
+                                        overflow: TextOverflow.clip,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: media.width * 0.01,
-                                  ),
-                                  Text(
-                                    userData["lastName"],
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "SFProText",
+                                    SizedBox(
+                                      width: media.width * 0.01,
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      userData["lastName"],
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "SFProText",
+                                        overflow: TextOverflow.clip,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               );
                             } else {
                               return CircularProgressIndicator();
@@ -516,10 +521,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                             width: media.width * 0.43,
                                             child: Text(
                                               title,
+                                              maxLines: 1,
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontFamily: "SFProText",
                                                 fontWeight: FontWeight.bold,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
                                             ),
                                           ),
@@ -530,10 +537,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             width: media.width * 0.43,
                                             child: Text(
                                               descriptions,
+                                              maxLines: 2,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily: "SFProText",
-                                                overflow: TextOverflow.clip,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
                                             ),
                                           ),

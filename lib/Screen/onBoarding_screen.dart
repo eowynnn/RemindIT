@@ -37,7 +37,7 @@ class _onBoardingState extends State<onBoarding> {
           SafeArea(
             child: TextButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (_) => LoginPage(),
@@ -45,7 +45,7 @@ class _onBoardingState extends State<onBoarding> {
                 );
               },
               child: Text(
-                "Skip",
+                currentIndex == contents.length - 1 ? "" : "Skip",
                 style: TextStyle(color: AppColors.textColor1),
               ),
             ),
@@ -121,7 +121,7 @@ class _onBoardingState extends State<onBoarding> {
             child: TextButton(
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (_) => LoginPage(),
@@ -161,7 +161,9 @@ class _onBoardingState extends State<onBoarding> {
       margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: AppColors.primaryColor1,
+        color: currentIndex == index
+            ? AppColors.primaryColor1
+            : AppColors.lightGreyColor,
       ),
     );
   }

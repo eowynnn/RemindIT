@@ -65,6 +65,7 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           "Article",
           style: TextStyle(
@@ -73,45 +74,36 @@ class _ArtickelWidgetState extends State<ArtickelWidget> {
               fontFamily: "SFProText"),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xffffffff),
+        backgroundColor: Colors.white,
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(12),
         itemCount: articles.length,
         itemBuilder: (context, index) {
           final article = articles[index];
-          return ListTile(
-            leading: Image.network(
-              article.urlImage,
-              width: 120,
-              height: 140,
-              fit: BoxFit.cover,
-            ),
-            title: Text(
-              article.title,
-              style: TextStyle(fontFamily: "SFProText"),
-            ),
-            subtitle: Container(
-              height: 35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: AppColors.primaryColor1,
-              ),
-              child: Center(
-                child: InkWell(
-                  onTap: () {
-                    launchUrl(
-                      Uri.parse(article.url),
-                    );
-                  },
-                  child: Text(
-                    "Learn More",
-                    style: TextStyle(
-                      fontFamily: "SFProText",
-                      color: Colors.white,
-                    ),
-                  ),
+          return InkWell(
+            onTap: () {
+              launchUrl(Uri.parse("${article.url}"));
+            },
+            child: ListTile(
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.network(
+                  article.urlImage,
+                  width: 120,
+                  height: 140,
+                  fit: BoxFit.cover,
                 ),
+              ),
+              title: Text(
+                article.title,
+                maxLines: 2,
+                style: TextStyle(fontFamily: "SFProText"),
+              ),
+              subtitle: Text(
+                article.url,
+                style: TextStyle(
+                    fontFamily: "SFProText", overflow: TextOverflow.ellipsis),
               ),
             ),
           );

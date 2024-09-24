@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:remindits/Screen/login_screen.dart';
 import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/text_box_profile.dart';
@@ -43,6 +42,8 @@ class _ProfilPageState extends State<ProfilPage> {
 
   Future<void> editField(String field) async {
     String newValue = "";
+    String currentValue = await _getUserFieldValue(field);
+
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -55,7 +56,7 @@ class _ProfilPageState extends State<ProfilPage> {
           autofocus: true,
           style: TextStyle(color: AppColors.textColor1),
           decoration: InputDecoration(
-            hintText: "Enter new $field",
+            hintText: currentValue,
             hintStyle: TextStyle(color: Colors.grey),
           ),
           onChanged: (value) {
@@ -84,6 +85,12 @@ class _ProfilPageState extends State<ProfilPage> {
     if (newValue.trim().length > 0) {
       await userCollection.doc(currentUser!.uid).update({field: newValue});
     }
+  }
+
+  Future<String> _getUserFieldValue(String field) async {
+    final doc = await userCollection.doc(currentUser!.uid).get();
+    final data = doc.data();
+    return data![field];
   }
 
   @override
@@ -116,9 +123,14 @@ class _ProfilPageState extends State<ProfilPage> {
                   const SizedBox(
                     height: 50,
                   ),
-                  const Icon(
-                    FontAwesomeIcons.user,
-                    size: 75,
+                  Container(
+                    width: 100,
+                    child: Image.asset(
+                      "assets/png/logo.png",
+                      fit: BoxFit.contain,
+                      width: 140,
+                      height: 140,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

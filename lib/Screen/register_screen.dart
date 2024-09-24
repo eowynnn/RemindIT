@@ -36,6 +36,7 @@ class _RegistPageState extends State<RegistPage> {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+    bool isLoading = false;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -199,10 +200,13 @@ class _RegistPageState extends State<RegistPage> {
                     height: media.width * 0.06,
                   ),
                   RoundGradientButton(
-                    title: "Create Account",
+                    title: isLoading ? "Loading..." : "Create Account",
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
                         if (!_isCheck) {
+                          setState(() {
+                            isLoading = true;
+                          });
                           try {
                             UserCredential userCredential =
                                 await _auth.createUserWithEmailAndPassword(
@@ -386,6 +390,10 @@ class _RegistPageState extends State<RegistPage> {
                                 content: Text(e.toString()),
                               ),
                             );
+                          } finally {
+                            setState(() {
+                              isLoading = false;
+                            });
                           }
                         }
                       }
@@ -394,6 +402,11 @@ class _RegistPageState extends State<RegistPage> {
                   SizedBox(
                     height: media.width * 0.05,
                   ),
+                  if (isLoading)
+                    CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          AppColors.primaryColor1),
+                    ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
