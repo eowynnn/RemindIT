@@ -223,7 +223,7 @@ class _RegistPageState extends State<RegistPage> {
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text("Account created successfully"),
+                                content: Text("Akun berhasil dibuat"),
                               ),
                             );
                             ReminderModel reminderModel1 = ReminderModel();
@@ -232,9 +232,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel1.time =
                                 Timestamp.fromDate(reminderTime1);
                             reminderModel1.onOff = true;
-                            reminderModel1.title = 'Strart The Day';
+                            reminderModel1.title = 'Mulailah Hari';
                             reminderModel1.description =
-                                'Start the day by doing some light stretching.';
+                                'Mulailah hari dengan melakukan peregangan ringan.';
                             FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -249,9 +249,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel2.time =
                                 Timestamp.fromDate(reminderTime2);
                             reminderModel2.onOff = true;
-                            reminderModel2.title = 'Healthy Breakfast';
+                            reminderModel2.title = 'Sarapan Sehat';
                             reminderModel2.description =
-                                'Enjoy a nutrient-rich breakfast';
+                                'Nikmati sarapan yang kaya nutrisi';
                             FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -264,9 +264,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel3.time =
                                 Timestamp.fromDate(reminderTime3);
                             reminderModel3.onOff = true;
-                            reminderModel3.title = 'Time For Drink';
+                            reminderModel3.title = 'Jangan lupa minum';
                             reminderModel3.description =
-                                'Hello Its Time to Drink some water';
+                                'Jangan lupakan minuman yang sehat.';
                             FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -281,9 +281,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel4.time =
                                 Timestamp.fromDate(reminderTime4);
                             reminderModel4.onOff = true;
-                            reminderModel4.title = 'Time For Lunch';
+                            reminderModel4.title = 'Waktunya Makan Siang';
                             reminderModel4.description =
-                                'Serve a balanced lunch with protein.';
+                                'Sajikan makan siang seimbang dengan protein.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -299,9 +299,9 @@ class _RegistPageState extends State<RegistPage> {
                                 Timestamp.fromDate(reminderTime5);
                             reminderModel5.onOff = true;
                             reminderModel5.title =
-                                'Afternoon Physical Activity';
+                                'Aktivitas Fisik Sore Hari';
                             reminderModel5.description =
-                                'Do sports or exercise to relieve stress';
+                                'Lakukan olahraga atau latihan untuk menghilangkan stres';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -316,9 +316,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel6.time =
                                 Timestamp.fromDate(reminderTime6);
                             reminderModel6.onOff = true;
-                            reminderModel6.title = 'Healthy Dinner';
+                            reminderModel6.title = 'Makan Malam Sehat';
                             reminderModel6.description =
-                                'Choose healthy and nutritious dinners to support your body recovery and maintain health.';
+                                'Pilihlah makan malam yang sehat dan bergizi untuk mendukung pemulihan tubuh dan menjaga kesehatan.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -333,9 +333,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel7.time =
                                 Timestamp.fromDate(reminderTime7);
                             reminderModel7.onOff = true;
-                            reminderModel7.title = 'Leisure Time';
+                            reminderModel7.title = 'Luangkan Waktu';
                             reminderModel7.description =
-                                'Take time for relaxing activities such as reading a book, meditation, or a hobby to calm your mind after a day of activities.';
+                                'Luangkan waktu untuk melakukan kegiatan yang menenangkan seperti membaca buku, meditasi, atau melakukan hobi untuk menenangkan pikiran setelah seharian beraktivitas.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -350,9 +350,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel8.time =
                                 Timestamp.fromDate(reminderTime8);
                             reminderModel8.onOff = true;
-                            reminderModel8.title = 'Sleep Time';
+                            reminderModel8.title = 'Waktunya untuk Tidur';
                             reminderModel8.description =
-                                'Go to bed on time to give your body a chance to rest.';
+                                'Tidurlah tepat waktu untuk memberi tubuh Anda kesempatan beristirahat.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
@@ -367,9 +367,9 @@ class _RegistPageState extends State<RegistPage> {
                             reminderModel9.time =
                                 Timestamp.fromDate(reminderTime9);
                             reminderModel9.onOff = true;
-                            reminderModel9.title = 'Wake Up Time';
+                            reminderModel9.title = 'Waktu Bangun';
                             reminderModel9.description =
-                                'Wake up on time to get your energy back and help you recover from the day’s activities.';
+                                'Bangun tepat waktu untuk mendapatkan kembali energi dan membantu Anda pulih dari aktivitas hari itu.';
                             await FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(uid)
