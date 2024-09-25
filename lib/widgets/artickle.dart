@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:remindits/model/article_model.dart';
-import 'package:remindits/utils/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ArtickelWidget extends StatefulWidget {

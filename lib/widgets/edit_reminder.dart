@@ -5,11 +5,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:remindits/model/reminder_model.dart';
 import 'package:remindits/utils/app_colors.dart';
 
-addReminder(BuildContext context, String uid) {
+editReminder(BuildContext context, String uid,String reminderID,String title,String description) {
   TimeOfDay time = TimeOfDay.now();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
-  add(String uid, TimeOfDay time) {
+  edit(String uid, TimeOfDay time) {
     try {
       DateTime dateTime = DateTime(1970, 1, 1, time.hour, time.minute);
       Timestamp timestamp = Timestamp.fromDate(dateTime);
@@ -19,37 +19,20 @@ addReminder(BuildContext context, String uid) {
       if (titleController.text.isNotEmpty) {
         reminderModel.title = titleController.text;
       } else {
-        reminderModel.title = 'Reminder';
+        reminderModel.title = title;
       }
       if (descController.text.isNotEmpty) {
         reminderModel.description = descController.text;
       } else {
-        reminderModel.description = 'Reminders';
+        reminderModel.description = description;
       }
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('reminder')
-          .get()
-          .then((querySnapshot) {
-        int reminderIndex =
-            querySnapshot.docs.length; // dapatkan jumlah dokumen
-        String reminderIndexString;
-        if (reminderIndex < 10) {
-          reminderIndexString = 'reminder_$reminderIndex';
-        } else {
-          String alphabet = String.fromCharCode(
-              64 + (reminderIndex - 9)); // konversi ke karakter alfabet
-          reminderIndexString = 'reminder_$alphabet';
-        }
         FirebaseFirestore.instance
             .collection('users')
             .doc(uid)
             .collection('reminder')
-            .doc(reminderIndexString) // gunakan nilai index
+            .doc(reminderID)
             .set(reminderModel.toMap());
-      });
-      Fluttertoast.showToast(msg: 'Reminder Added');
+      Fluttertoast.showToast(msg: 'Reminder Berhasil diedit');
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
     }
@@ -65,12 +48,12 @@ addReminder(BuildContext context, String uid) {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            title: Text('Add Reminder'),
+            title: Text('Edit Reminder'),
             content: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Make a new reminder"),
+                  Text("Edit reminder kamu"),
                   SizedBox(
                     height: 20,
                   ),
@@ -88,7 +71,7 @@ addReminder(BuildContext context, String uid) {
                             EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
-                        hintText: 'Add title',
+                        hintText: title,
                         hintStyle: TextStyle(
                             fontSize: 14,
                             color: AppColors.textColor1,
@@ -114,7 +97,7 @@ addReminder(BuildContext context, String uid) {
                             EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
-                        hintText: 'Add Description',
+                        hintText: description,
                         hintStyle: TextStyle(
                             fontSize: 14,
                             color: AppColors.textColor1,
@@ -132,7 +115,7 @@ addReminder(BuildContext context, String uid) {
                         context: context,
                         initialTime: TimeOfDay.now(),
                       );
-          
+
                       if (newTime == null) return;
                       setState(
                         () {
@@ -173,7 +156,7 @@ addReminder(BuildContext context, String uid) {
               ),
               TextButton(
                 onPressed: () {
-                  add(uid, time);
+                  edit(uid, time);
                   Navigator.pop(context);
                 },
                 child: Text(
