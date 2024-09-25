@@ -12,6 +12,7 @@ import 'package:remindits/utils/app_colors.dart';
 import 'package:remindits/widgets/add_reminder.dart';
 import 'package:remindits/widgets/artickle.dart';
 import 'package:remindits/widgets/delete_reminder.dart';
+import 'package:remindits/widgets/detail_reminder.dart';
 import 'package:remindits/widgets/edit_reminder.dart';
 import 'package:remindits/widgets/switcher.dart';
 
@@ -336,12 +337,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                         data.docs[index].id,
                                         title,
                                         descriptions);
-                                    setState(() {
-                                      expandedIndex =
-                                          null; // Tutup setelah edit
-                                    });
                                   },
-                                  trailingIcon: Icon(Icons.edit),
+                                  trailingIcon: Icon(FontAwesomeIcons.pen,size: 15,),
+                                ),
+                                FocusedMenuItem(
+                                  title: Text("Detail"),
+                                  onPressed: () async {
+                                    detailReminder(
+                                        context,
+                                        title,
+                                        descriptions,
+                                        formattedTime,
+                                        user!.uid,
+                                        data.docs[index].id);
+                                  },
+                                  trailingIcon: Icon(FontAwesomeIcons.info,size: 15,),
                                 ),
                                 FocusedMenuItem(
                                   backgroundColor: Colors.red,
@@ -356,7 +366,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         user!.uid);
                                   },
                                   trailingIcon: Icon(
-                                    Icons.delete,
+                                    FontAwesomeIcons.trash,
+                                    size: 15,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -364,8 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               blurBackgroundColor: Colors.blueGrey[300],
                               menuOffset: 20,
                               menuWidth: media.width * 0.5,
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                               openWithTap: true,
                               child: Container(
                                 decoration: BoxDecoration(
@@ -397,18 +407,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                               width: media.width * 0.43,
                                               child: Text(
                                                 title,
-                                                maxLines: expandedIndex == index
-                                                    ? null
-                                                    : 1, // Periksa apakah index sesuai dengan expandedIndex
+                                                maxLines: 1,
                                                 style: TextStyle(
                                                   fontSize: 18,
                                                   fontFamily: "SFProText",
                                                   fontWeight: FontWeight.bold,
-                                                  overflow: expandedIndex ==
-                                                          index
-                                                      ? TextOverflow.visible
-                                                      : TextOverflow
-                                                          .ellipsis, // Tampilkan semua teks hanya jika expanded
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
                                               ),
                                             ),
@@ -419,16 +424,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                               width: media.width * 0.43,
                                               child: Text(
                                                 descriptions,
-                                                maxLines: expandedIndex == index
-                                                    ? null
-                                                    : 2, // Tampilkan semua deskripsi hanya jika expanded
+                                                maxLines:
+                                                    2, // Tampilkan semua deskripsi hanya jika expanded
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontFamily: "SFProText",
-                                                  overflow: expandedIndex ==
-                                                          index
-                                                      ? TextOverflow.visible
-                                                      : TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
                                               ),
                                             ),
